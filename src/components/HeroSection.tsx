@@ -9,11 +9,11 @@ const HeroSection = () => {
       <div className="container max-w-6xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
-            <h1 className="text-4xl lg:text-5xl font-bold text-foreground leading-tight">
+            <h1 className="text-4xl lg:text-5xl font-bold text-foreground leading-tight font-sans">
               Conheça um modelo de negócio{" "}
               <span className="text-primary">melhor que franquia</span>
             </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed">
+            <p className="text-lg text-foreground leading-relaxed font-sans">
               Como profissionais experientes estão construindo patrimônio sólido com receita recorrente - 
               investindo 50x menos que franquias tradicionais e com muito mais estabilidade
             </p>
@@ -22,7 +22,7 @@ const HeroSection = () => {
           <Card className="shadow-lg border-0" style={{ boxShadow: 'var(--card-shadow)' }}>
             <CardContent className="p-8">
               <div className="bg-accent text-accent-foreground p-6 rounded-lg mb-6 text-center">
-                <h3 className="text-xl font-bold mb-2">TIRE SUAS DÚVIDAS</h3>
+                <h3 className="text-xl font-bold mb-2 font-sans uppercase">TIRE SUAS DÚVIDAS</h3>
                 <p className="text-sm">Preencha o formulário e receba mais informações</p>
               </div>
               
@@ -55,7 +55,7 @@ const HeroSection = () => {
                 <Button 
                   type="submit" 
                   size="lg" 
-                  className="w-full bg-success hover:bg-success/90 text-success-foreground font-semibold"
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold font-sans uppercase"
                 >
                   QUERO SABER MAIS
                 </Button>

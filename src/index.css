@@ -8,43 +8,58 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 98%;
-    --foreground: 220 10% 15%;
+    /* eGestor Brand Colors */
+    --cta: 140 100% 73%;
+    --cta-foreground: 0 0% 0%;
+    
+    --tagline: 15 100% 60%;
+    --tagline-foreground: 0 0% 100%;
+    
+    --brand-light: 0 0% 100%;
+    --brand-medium: 0 6% 96%;
+    --brand-dark: 300 2% 30%;
+    
+    /* Page background gradient */
+    --page-gradient: linear-gradient(90deg, #ebfff3, #fff0eb);
+    
+    /* Updated semantic tokens to use brand colors */
+    --background: 0 6% 96%;
+    --foreground: 300 2% 30%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 10% 15%;
+    --card-foreground: 300 2% 30%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 10% 15%;
+    --popover-foreground: 300 2% 30%;
 
-    --primary: 142 76% 36%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 140 100% 73%;
+    --primary-foreground: 0 0% 0%;
 
-    --secondary: 142 76% 92%;
-    --secondary-foreground: 142 76% 16%;
+    --secondary: 0 6% 96%;
+    --secondary-foreground: 300 2% 30%;
 
-    --muted: 220 14% 96%;
-    --muted-foreground: 220 10% 45%;
+    --muted: 0 6% 96%;
+    --muted-foreground: 300 2% 50%;
 
-    --accent: 15 86% 59%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 15 100% 60%;
+    --accent-foreground: 0 0% 100%;
 
-    --success: 142 76% 36%;
-    --success-foreground: 0 0% 98%;
+    --success: 140 100% 73%;
+    --success-foreground: 0 0% 0%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 142 76% 36%;
+    --border: 0 6% 90%;
+    --input: 0 6% 90%;
+    --ring: 140 100% 73%;
 
-    /* Custom design tokens */
-    --hero-gradient: linear-gradient(135deg, hsl(142 76% 36%), hsl(142 76% 42%));
-    --accent-gradient: linear-gradient(135deg, hsl(15 86% 59%), hsl(15 86% 65%));
-    --section-bg: linear-gradient(180deg, hsl(142 76% 97%), hsl(0 0% 98%));
-    --card-shadow: 0 4px 20px -2px hsl(142 76% 36% / 0.1);
-    --accent-shadow: 0 4px 20px -2px hsl(15 86% 59% / 0.15);
+    /* Brand gradients and shadows */
+    --hero-gradient: linear-gradient(135deg, hsl(140 100% 73%), hsl(140 100% 78%));
+    --accent-gradient: linear-gradient(135deg, hsl(15 100% 60%), hsl(15 100% 65%));
+    --section-bg: linear-gradient(180deg, hsl(140 100% 97%), hsl(0 6% 98%));
+    --card-shadow: 0 4px 20px -2px hsl(140 100% 73% / 0.1);
+    --accent-shadow: 0 4px 20px -2px hsl(15 100% 60% / 0.15);
 
     --radius: 0.5rem;
 
@@ -110,6 +125,9 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+    background: var(--page-gradient);
+    font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+    min-height: 100vh;
   }
 }

@@ -10,7 +10,7 @@ const CTASection = () => {
     <section className="py-16 bg-gradient-to-br from-primary/5 to-accent/5">
       <div className="container max-w-4xl mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-foreground mb-6">
+          <h2 className="text-3xl font-bold text-foreground mb-6 font-sans">
             Quer entender exatamente como funciona?
           </h2>
           <p className="text-lg text-muted-foreground mb-2">
@@ -90,7 +90,7 @@ const CTASection = () => {
                 <Button 
                   type="submit" 
                   size="lg" 
-                  className="flex-1 bg-success hover:bg-success/90 text-success-foreground font-semibold text-lg py-6"
+                  className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-lg py-6 font-sans uppercase"
                 >
                   <Phone className="w-5 h-5 mr-2" />
                   QUERO CONVERSAR AGORA
