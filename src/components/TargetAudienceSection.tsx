@@ -16,7 +16,7 @@ const TargetAudienceSection = () => {
         </div>
         <Card style={{
         boxShadow: 'var(--card-shadow)'
-      }} className="border-0 bg-transparent">
+      }} className="border-0 bg-white shadow-accent ">
           <CardHeader className="text-center pb-4 md:pb-8 px-4 md:px-6">
           </CardHeader>
           <CardContent className="space-y-4 md:space-y-6 px-4 md:px-6">
