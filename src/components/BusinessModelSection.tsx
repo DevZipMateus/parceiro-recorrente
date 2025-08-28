@@ -5,7 +5,6 @@ const BusinessModelSection = () => {
   return <section className="py-8 md:py-16 bg-white">
       <div className="container max-w-4xl mx-auto px-4 md:px-6">
         <Card style={{
-        boxShadow: 'var(--card-shadow)'
       }} className="border-0">
           <CardHeader className="text-center pb-4 md:pb-8 px-4 md:px-6">
             <CardTitle className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-4">
