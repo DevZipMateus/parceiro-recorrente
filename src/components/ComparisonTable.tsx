@@ -42,7 +42,7 @@ const ComparisonTable = () => {
     egestor: "Baixo",
     advantage: "egestor"
   }];
-  return <section className="py-8 md:py-16 bg-background">
+  return <section className="py-8 md:py-16 bg-white">
       <div className="container max-w-6xl mx-auto px-4 md:px-6">
         <Card className="border-0 shadow-lg overflow-hidden" style={{
         boxShadow: 'var(--card-shadow)'
