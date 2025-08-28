@@ -1,6 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle2 } from "lucide-react";
 
 const BusinessModelSection = () => {
   const benefits = [
@@ -26,9 +25,7 @@ const BusinessModelSection = () => {
             <div className="grid gap-3 md:gap-4">
               {benefits.map((benefit, index) => (
                 <div key={index} className="flex gap-3 md:gap-4 items-start p-3 md:p-4 bg-success/5 rounded-lg border border-success/20">
-                  <Badge variant="secondary" className="bg-success text-success-foreground flex-shrink-0">
-                    <CheckCircle2 className="w-3 h-3 md:w-4 md:h-4" />
-                  </Badge>
+                  <span className="text-lg flex-shrink-0">✅</span>
                   <span className="text-foreground leading-relaxed text-sm md:text-base">{benefit}</span>
                 </div>
               ))}

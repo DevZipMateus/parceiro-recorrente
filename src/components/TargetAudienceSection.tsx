@@ -1,5 +1,4 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { CheckCircle } from "lucide-react";
 import familyImage from "@/assets/family-success.jpg";
 
 const TargetAudienceSection = () => {
@@ -35,7 +34,7 @@ const TargetAudienceSection = () => {
             <ul className="space-y-3 md:space-y-4">
               {targetPoints.map((point, index) => (
                 <li key={index} className="flex gap-3 md:gap-4 items-start">
-                  <CheckCircle className="w-5 h-5 md:w-6 md:h-6 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-lg flex-shrink-0">✅</span>
                   <span className="text-muted-foreground leading-relaxed text-sm md:text-base">{point}</span>
                 </li>
               ))}

@@ -1,6 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle2, XCircle } from "lucide-react";
 
 const ComparisonTable = () => {
   const comparisons = [
@@ -71,14 +70,14 @@ const ComparisonTable = () => {
                   <h4 className="font-bold text-foreground mb-3">{item.aspect}</h4>
                   <div className="space-y-3">
                     <div className="flex items-start gap-2">
-                      <XCircle className="w-4 h-4 text-destructive mt-0.5 flex-shrink-0" />
+                      <span className="text-base flex-shrink-0">❌</span>
                       <div>
                         <p className="text-xs text-muted-foreground font-medium">Franquia Tradicional</p>
                         <p className="text-sm text-muted-foreground">{item.franchise}</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
+                      <span className="text-base flex-shrink-0">✅</span>
                       <div>
                         <p className="text-xs text-success font-medium">Revenda eGestor</p>
                         <p className="text-sm text-success font-medium">{item.egestor}</p>
@@ -107,13 +106,13 @@ const ComparisonTable = () => {
                       </td>
                       <td className="p-3 md:p-6 text-center text-muted-foreground">
                         <div className="flex items-center justify-center gap-2 text-sm md:text-base">
-                          <XCircle className="w-4 h-4 text-destructive flex-shrink-0" />
+                          <span className="text-base flex-shrink-0">❌</span>
                           <span>{item.franchise}</span>
                         </div>
                       </td>
                       <td className="p-3 md:p-6 text-center bg-success/5">
                         <div className="flex items-center justify-center gap-2 text-sm md:text-base">
-                          <CheckCircle2 className="w-4 h-4 text-success flex-shrink-0" />
+                          <span className="text-base flex-shrink-0">✅</span>
                           <span className="text-success font-medium">{item.egestor}</span>
                         </div>
                       </td>

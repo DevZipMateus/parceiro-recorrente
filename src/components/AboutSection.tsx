@@ -42,7 +42,7 @@ const AboutSection = () => {
               <ul className="space-y-2 md:space-y-3 mb-6 md:mb-8">
                 {clientTypes.map((type, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                    <span className="text-base flex-shrink-0">🔹</span>
                     <span className="text-muted-foreground text-sm md:text-base leading-relaxed">{type}</span>
                   </li>
                 ))}
