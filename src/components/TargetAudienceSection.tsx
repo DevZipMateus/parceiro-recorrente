@@ -11,29 +11,29 @@ const TargetAudienceSection = () => {
   ];
 
   return (
-    <section className="py-16 bg-gradient-to-b from-secondary/30 to-background">
-      <div className="container max-w-4xl mx-auto px-6">
+    <section className="py-8 md:py-16 bg-gradient-to-b from-secondary/30 to-background">
+      <div className="container max-w-4xl mx-auto px-4 md:px-6">
         <Card className="border-0 shadow-lg" style={{ boxShadow: 'var(--card-shadow)' }}>
-          <CardHeader className="text-center pb-8">
-            <CardTitle className="text-3xl font-bold text-foreground mb-4">
+          <CardHeader className="text-center pb-4 md:pb-8 px-4 md:px-6">
+            <CardTitle className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-4">
               Esse modelo de negócio é ideal para quem:
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-6">
-            <ul className="space-y-4">
+          <CardContent className="space-y-4 md:space-y-6 px-4 md:px-6">
+            <ul className="space-y-3 md:space-y-4">
               {targetPoints.map((point, index) => (
-                <li key={index} className="flex gap-4 items-start">
-                  <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
-                  <span className="text-muted-foreground leading-relaxed">{point}</span>
+                <li key={index} className="flex gap-3 md:gap-4 items-start">
+                  <CheckCircle className="w-5 h-5 md:w-6 md:h-6 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-muted-foreground leading-relaxed text-sm md:text-base">{point}</span>
                 </li>
               ))}
             </ul>
             
-            <div className="bg-secondary/50 p-6 rounded-lg mt-8">
-              <h3 className="text-xl font-bold text-foreground mb-4">
+            <div className="bg-secondary/50 p-4 sm:p-6 rounded-lg mt-6 md:mt-8">
+              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-3 md:mb-4">
                 Você não está passando por isso sozinho.
               </h3>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
                 Nós já ajudamos milhares de profissionais experientes que se encontravam nessas situações. 
                 Eles conseguiram um conjunto de clientes que trazem uma receita mensal de forma constante. 
                 Isso não é renda passiva e não é fácil. É preciso trabalho para conquistar novos clientes e, 

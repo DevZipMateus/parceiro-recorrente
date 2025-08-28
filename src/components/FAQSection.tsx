@@ -27,25 +27,25 @@ const FAQSection = () => {
   ];
 
   return (
-    <section className="py-16 bg-background">
-      <div className="container max-w-4xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-foreground mb-4">
+    <section className="py-8 md:py-16 bg-background">
+      <div className="container max-w-4xl mx-auto px-4 md:px-6">
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-4">
             Dúvidas Frequentes
           </h2>
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-4 md:space-y-6">
           {faqs.map((faq, index) => (
             <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-shadow" style={{ boxShadow: 'var(--card-shadow)' }}>
-              <CardHeader className="pb-4">
-                <CardTitle className="flex items-center gap-4 text-lg">
-                  <HelpCircle className="w-6 h-6 text-primary" />
-                  {faq.question}
+              <CardHeader className="pb-3 md:pb-4 px-4 md:px-6">
+                <CardTitle className="flex items-start gap-3 md:gap-4 text-base md:text-lg">
+                  <HelpCircle className="w-5 h-5 md:w-6 md:h-6 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="leading-relaxed">{faq.question}</span>
                 </CardTitle>
               </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground leading-relaxed pl-10">
+              <CardContent className="px-4 md:px-6">
+                <p className="text-muted-foreground leading-relaxed pl-8 md:pl-10 text-sm md:text-base">
                   {faq.answer}
                 </p>
               </CardContent>
