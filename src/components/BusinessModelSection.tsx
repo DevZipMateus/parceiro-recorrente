@@ -12,7 +12,7 @@ const BusinessModelSection = () => {
           </CardHeader>
           <CardContent className="space-y-4 md:space-y-6 px-4 md:px-6">
             <div className="grid gap-3 md:gap-4">
-              {benefits.map((benefit, index) => <div key={index} className="flex gap-3 md:gap-4 items-start p-3 md:p-4 rounded-lg">
+              {benefits.map((benefit, index) => <div key={index} className="flex gap-3 md:gap-4 items-start p-3 md:p-4 rounded-lg py-0">
                   <span className="text-lg flex-shrink-0">✅</span>
                   <span className="text-foreground leading-relaxed text-sm md:text-base">{benefit}</span>
                 </div>)}

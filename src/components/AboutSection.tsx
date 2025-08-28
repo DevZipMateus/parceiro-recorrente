@@ -1,32 +1,21 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import businessImage from "@/assets/business-meeting.jpg";
-
 const AboutSection = () => {
-  const clientTypes = [
-    "Profissionais experientes de marketing e vendas buscando uma nova fonte de receita",
-    "Pessoas que já tentaram outras oportunidades sem sucesso",
-    "Quem queria sair da dependência do salário mas tinha receio de 'arriscar' muito dinheiro"
-  ];
-
-  return (
-    <section className="py-8 md:py-16 bg-white">
+  const clientTypes = ["Profissionais experientes de marketing e vendas buscando uma nova fonte de receita", "Pessoas que já tentaram outras oportunidades sem sucesso", "Quem queria sair da dependência do salário mas tinha receio de 'arriscar' muito dinheiro"];
+  return <section className="py-8 md:py-16 bg-white">
       <div className="container max-w-6xl mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center mb-8">
           <div>
             <Badge variant="outline" className="mb-3 md:mb-4 text-accent border-accent text-xs sm:text-sm">
               20 ANOS DE EXPERIÊNCIA
             </Badge>
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-4 md:mb-6 leading-tight">
+            <h2 className="text-xl sm:text-2xl font-bold text-foreground mb-4 md:mb-6 leading-tight md:text-3xl">
               Há 20 anos ajudamos mais de 20.000 pequenas empresas a organizarem suas finanças através do eGestor.
             </h2>
           </div>
           <div className="relative">
-            <img 
-              src={businessImage} 
-              alt="Reunião de negócios com profissionais discutindo estratégias de crescimento financeiro"
-              className="w-full h-auto rounded-2xl shadow-xl"
-            />
+            <img src={businessImage} alt="Reunião de negócios com profissionais discutindo estratégias de crescimento financeiro" className="w-full h-auto rounded-2xl shadow-xl" />
           </div>
         </div>
         <Card className="border-0 shadow-none">
@@ -40,12 +29,10 @@ const AboutSection = () => {
               </p>
               
               <ul className="space-y-2 md:space-y-3 mb-6 md:mb-8">
-                {clientTypes.map((type, index) => (
-                  <li key={index} className="flex items-start gap-3">
+                {clientTypes.map((type, index) => <li key={index} className="flex items-start gap-3">
                     <span className="text-base flex-shrink-0">🔹</span>
                     <span className="text-muted-foreground text-sm md:text-base leading-relaxed">{type}</span>
-                  </li>
-                ))}
+                  </li>)}
               </ul>
             </div>
 
@@ -61,8 +48,6 @@ const AboutSection = () => {
           </CardContent>
         </Card>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default AboutSection;
