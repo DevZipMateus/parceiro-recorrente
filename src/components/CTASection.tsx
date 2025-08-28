@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { ArrowRight, Phone, Mail } from "lucide-react";
 
 const CTASection = () => {
   return (
@@ -91,9 +92,9 @@ const CTASection = () => {
                   size="lg" 
                   className="w-full h-12 md:h-auto bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-sm md:text-lg py-3 md:py-6 font-sans uppercase"
                 >
-                  <span className="text-lg mr-2">📞</span>
+                  <Phone className="w-4 h-4 md:w-5 md:h-5 mr-2" />
                   QUERO CONVERSAR AGORA
-                  <span className="text-lg ml-2">➡️</span>
+                  <ArrowRight className="w-4 h-4 md:w-5 md:h-5 ml-2" />
                 </Button>
               </div>
 
@@ -103,11 +104,11 @@ const CTASection = () => {
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 mt-3 md:mt-4 text-xs sm:text-sm text-muted-foreground">
                   <div className="flex items-center gap-2">
-                    <span className="text-sm">📞</span>
+                    <Phone className="w-3 h-3 md:w-4 md:h-4" />
                     <span>Ligação em até 24h</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="text-sm">📧</span>
+                    <Mail className="w-3 h-3 md:w-4 md:h-4" />
                     <span>Material por e-mail</span>
                   </div>
                 </div>

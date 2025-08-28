@@ -39,13 +39,13 @@ All colors MUST be HSL.
     --secondary-foreground: 300 2% 30%;
 
     --muted: 0 6% 96%;
-    --muted-foreground: 300 2% 40%;
+    --muted-foreground: 300 2% 50%;
 
     --accent: 15 100% 60%;
     --accent-foreground: 0 0% 100%;
 
-    --success: 140 60% 45%;
-    --success-foreground: 0 0% 100%;
+    --success: 140 100% 73%;
+    --success-foreground: 0 0% 0%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
