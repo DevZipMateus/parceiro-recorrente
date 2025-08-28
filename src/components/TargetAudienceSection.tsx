@@ -13,8 +13,7 @@ const TargetAudienceSection = () => {
               Esse modelo de negócio é ideal para quem:
             </h2>
           </div>
-        </div>
-        <Card className="border-0 bg-white">
+        </div>        <Card className="border-0 bg-white">
           <CardHeader className="text-center pb-4 md:pb-8 px-4 md:px-6">
           </CardHeader>
           <CardContent className="space-y-4 md:space-y-6 px-4 md:px-6">
