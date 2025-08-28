@@ -1,12 +1,11 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { TrendingUp, HeadphonesIcon, Users, Target } from "lucide-react";
 import workspaceImage from "@/assets/workspace-analytics.jpg";
 
 const DifferentialsSection = () => {
   const differentials = [
     {
-      icon: <TrendingUp className="w-8 h-8 text-success" />,
+      emoji: "📈",
       title: "RECEITA RECORRENTE REAL",
       content: `Cada empresa que você conquistar vai pagar mensalmente. Assim que você alcançar 50 clientes 
       pagando R$ 279,90/mês terá R$ 13.995,00 mensais recorrentes. No mês seguinte você já começa com esse valor garantido. 
@@ -15,18 +14,18 @@ const DifferentialsSection = () => {
       50% da operação que vai diretamente para seu bolso e para o patrimônio de sua família.`
     },
     {
-      icon: <HeadphonesIcon className="w-8 h-8 text-accent" />,
+      emoji: "🎧",
       title: "SUPORTE TOTAL",
       content: `Nós fazemos as primeiras vendas junto com você. Oferecemos suporte técnico para todos os seus clientes. 
       Você foca apenas em vender e manter o relacionamento com seu cliente.`
     },
     {
-      icon: <Users className="w-8 h-8 text-primary" />,
+      emoji: "👥",
       title: "MERCADO GIGANTESCO",
       content: `Existem milhões de pequenas empresas no Brasil que ainda controlam tudo na planilha ou usam sistemas ultrapassados.`
     },
     {
-      icon: <Target className="w-8 h-8 text-success" />,
+      emoji: "🎯",
       title: "INVESTIMENTO REALISTA",
       content: `Enquanto franquias pedem R$ 80-200 mil iniciais, você investe menos de R$ 1.000 mensais. 
       É o investimento mais seguro possível, com escalabilidade e lucro em potencial muito maior que a média do mercado.`
@@ -57,7 +56,7 @@ const DifferentialsSection = () => {
               <CardHeader className="pb-3 md:pb-4">
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 mb-3 md:mb-4">
                   <div className="p-2 sm:p-3 bg-secondary rounded-lg">
-                    {item.icon}
+                    <span className="text-2xl">{item.emoji}</span>
                   </div>
                   <Badge variant="outline" className="text-accent border-accent font-bold text-xs sm:text-sm">
                     {item.title}

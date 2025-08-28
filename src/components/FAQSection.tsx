@@ -1,5 +1,4 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { HelpCircle } from "lucide-react";
 
 const FAQSection = () => {
   const faqs = [
@@ -40,7 +39,7 @@ const FAQSection = () => {
             <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-shadow" style={{ boxShadow: 'var(--card-shadow)' }}>
               <CardHeader className="pb-3 md:pb-4 px-4 md:px-6">
                 <CardTitle className="flex items-start gap-3 md:gap-4 text-base md:text-lg">
-                  <HelpCircle className="w-5 h-5 md:w-6 md:h-6 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-xl flex-shrink-0 mt-0.5">❓</span>
                   <span className="leading-relaxed">{faq.question}</span>
                 </CardTitle>
               </CardHeader>
