@@ -25,7 +25,7 @@ const DifferentialsSection = () => {
     content: `Enquanto franquias pedem R$ 80-200 mil iniciais, você investe menos de R$ 1.000 mensais. 
       É o investimento mais seguro possível, com escalabilidade e lucro em potencial muito maior que a média do mercado.`
   }];
-  return <section className="py-8 md:py-16 bg-white">
+  return <section className="py-8 md:py-16 bg-[#f6f1f1]">
       <div className="container max-w-6xl mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center mb-8 md:mb-12">
           <div>
