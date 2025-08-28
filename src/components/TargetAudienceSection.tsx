@@ -18,7 +18,7 @@ const TargetAudienceSection = () => {
           </CardHeader>
           <CardContent className="space-y-4 md:space-y-6 px-4 md:px-6">
             <ul className="space-y-3 md:space-y-4">
-              {targetPoints.map((point, index) => <li key={index} className="flex gap-3 md:gap-4 items-start">
+              {targetPoints.map((point, index) => <li key={index} className="flex gap-3 md:gap-4 items-start py-[10px]">
                   <span className="text-lg flex-shrink-0">✅</span>
                   <span className="text-muted-foreground leading-relaxed text-sm md:text-base">{point}</span>
                 </li>)}
