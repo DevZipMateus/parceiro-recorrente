@@ -4,8 +4,7 @@ const BusinessModelSection = () => {
   const benefits = ["Você investe menos de R$ 1.000 por mês (menos que muitas franquias cobram só de taxa mensal)", "Seus clientes ativos pagam TODO MÊS - criando uma receita previsível que só cresce", "Você não precisa de ponto comercial, estoque ou funcionários", "A sazonalidade não influencia no faturamento da sua empresa", "Você pode trabalhar de casa, da praia ou de qualquer lugar", "Seu produto nunca quebra, estraga ou sai de moda", "O mercado tem milhões de clientes em potencial, já que toda pequena empresa precisa"];
   return <section className="py-8 md:py-16 bg-white">
       <div className="container max-w-4xl mx-auto px-4 md:px-6">
-        <Card style={{
-      }} className="border-0">
+        <Card className="border-0 shadow-none">
           <CardHeader className="text-center pb-4 md:pb-8 px-4 md:px-6">
             <CardTitle className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-4">
               Oferecemos um modelo de negócio onde:
