@@ -29,7 +29,7 @@ const AboutSection = () => {
             />
           </div>
         </div>
-        <Card className="border-0 shadow-lg" style={{ boxShadow: 'var(--card-shadow)' }}>
+        <Card className="border-0 shadow-none">
           <CardHeader className="text-center pb-4 md:pb-8 px-4 md:px-6">
           </CardHeader>
           <CardContent className="space-y-6 md:space-y-8 px-4 md:px-6">
