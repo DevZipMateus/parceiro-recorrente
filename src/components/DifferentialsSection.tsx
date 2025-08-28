@@ -1,0 +1,85 @@
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { TrendingUp, HeadphonesIcon, Users, Target } from "lucide-react";
+
+const DifferentialsSection = () => {
+  const differentials = [
+    {
+      icon: <TrendingUp className="w-8 h-8 text-success" />,
+      title: "RECEITA RECORRENTE REAL",
+      content: `Cada empresa que você conquistar vai pagar mensalmente. Assim que você alcançar 50 clientes 
+      pagando R$ 279,90/mês terá R$ 13.995,00 mensais recorrentes. No mês seguinte você já começa com esse valor garantido. 
+      Mas o melhor desse modelo de negócio são as margens… Sem precisar de ponto comercial, funcionários e insumos você paga 
+      apenas o imposto sobre a receita e o valor por licença contratada para revender, deixando uma margem de lucro acima de 
+      50% da operação que vai diretamente para seu bolso e para o patrimônio de sua família.`
+    },
+    {
+      icon: <HeadphonesIcon className="w-8 h-8 text-accent" />,
+      title: "SUPORTE TOTAL",
+      content: `Nós fazemos as primeiras vendas junto com você. Oferecemos suporte técnico para todos os seus clientes. 
+      Você foca apenas em vender e manter o relacionamento com seu cliente.`
+    },
+    {
+      icon: <Users className="w-8 h-8 text-primary" />,
+      title: "MERCADO GIGANTESCO",
+      content: `Existem milhões de pequenas empresas no Brasil que ainda controlam tudo na planilha ou usam sistemas ultrapassados.`
+    },
+    {
+      icon: <Target className="w-8 h-8 text-success" />,
+      title: "INVESTIMENTO REALISTA",
+      content: `Enquanto franquias pedem R$ 80-200 mil iniciais, você investe menos de R$ 1.000 mensais. 
+      É o investimento mais seguro possível, com escalabilidade e lucro em potencial muito maior que a média do mercado.`
+    }
+  ];
+
+  return (
+    <section className="py-16 bg-gradient-to-b from-secondary/30 to-background">
+      <div className="container max-w-6xl mx-auto px-6">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-foreground mb-4">
+            Aqui está o que torna esse modelo diferente de tudo que você já viu:
+          </h2>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8">
+          {differentials.map((item, index) => (
+            <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-shadow" style={{ boxShadow: 'var(--card-shadow)' }}>
+              <CardHeader className="pb-4">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="p-3 bg-secondary rounded-lg">
+                    {item.icon}
+                  </div>
+                  <Badge variant="outline" className="text-accent border-accent font-bold">
+                    {item.title}
+                  </Badge>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground leading-relaxed">
+                  {item.content}
+                </p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        <Card className="mt-12 border-0 shadow-lg bg-gradient-to-r from-muted/30 to-secondary/30" style={{ boxShadow: 'var(--card-shadow)' }}>
+          <CardContent className="p-8">
+            <div className="text-center mb-6">
+              <Badge variant="outline" className="text-primary border-primary mb-4">
+                PESQUISA DE MERCADO
+              </Badge>
+            </div>
+            <blockquote className="text-lg italic text-center text-muted-foreground border-l-4 border-primary pl-6">
+              "O mercado brasileiro de pequenas empresas representa uma oportunidade única para fornecedores de ERP, 
+              com mais de 13 milhões de empresas ainda dependendo de controles manuais e 11,9 milhões sem qualquer 
+              sistema de gestão."
+            </blockquote>
+          </CardContent>
+        </Card>
+      </div>
+    </section>
+  );
+};
+
+export default DifferentialsSection;

@@ -1,0 +1,106 @@
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { CheckCircle2, XCircle } from "lucide-react";
+
+const ComparisonTable = () => {
+  const comparisons = [
+    {
+      aspect: "Investimento inicial",
+      franchise: "R$ 80.000 a R$ 300.000",
+      egestor: "Muito menor",
+      advantage: "egestor"
+    },
+    {
+      aspect: "Ponto físico",
+      franchise: "Obrigatório",
+      egestor: "100% digital",
+      advantage: "egestor"
+    },
+    {
+      aspect: "Retorno",
+      franchise: "2 a 3 anos",
+      egestor: "Poucos meses",
+      advantage: "egestor"
+    },
+    {
+      aspect: "Custos fixos",
+      franchise: "Aluguel, funcionários, estoque",
+      egestor: "Verificar os custos iniciais",
+      advantage: "egestor"
+    },
+    {
+      aspect: "Flexibilidade",
+      franchise: "Amarrado a contrato e regras",
+      egestor: "Liberdade para crescer sua carteira",
+      advantage: "egestor"
+    },
+    {
+      aspect: "Ganhos",
+      franchise: "Dependem de fluxo do ponto",
+      egestor: "Receita recorrente e previsível",
+      advantage: "egestor"
+    },
+    {
+      aspect: "Suporte",
+      franchise: "Treinamento + regras rígidas",
+      egestor: "Treinamento + acompanhamento contínuo",
+      advantage: "egestor"
+    },
+    {
+      aspect: "Risco",
+      franchise: "Médio/alto",
+      egestor: "Baixo",
+      advantage: "egestor"
+    }
+  ];
+
+  return (
+    <section className="py-16 bg-background">
+      <div className="container max-w-6xl mx-auto px-6">
+        <Card className="border-0 shadow-lg overflow-hidden" style={{ boxShadow: 'var(--card-shadow)' }}>
+          <CardHeader className="text-center pb-8 bg-gradient-to-r from-primary/5 to-accent/5">
+            <CardTitle className="text-3xl font-bold text-foreground">
+              Comparação: Franquia vs. eGestor
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="p-0">
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left p-6 font-bold text-foreground bg-muted/30">Aspecto</th>
+                    <th className="text-center p-6 font-bold text-foreground bg-muted/10">Franquia Tradicional</th>
+                    <th className="text-center p-6 font-bold text-success bg-success/5">Revenda eGestor</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {comparisons.map((item, index) => (
+                    <tr key={index} className="border-b border-border hover:bg-muted/20 transition-colors">
+                      <td className="p-6 font-medium text-foreground bg-muted/10">
+                        {item.aspect}
+                      </td>
+                      <td className="p-6 text-center text-muted-foreground">
+                        <div className="flex items-center justify-center gap-2">
+                          <XCircle className="w-4 h-4 text-destructive" />
+                          <span>{item.franchise}</span>
+                        </div>
+                      </td>
+                      <td className="p-6 text-center bg-success/5">
+                        <div className="flex items-center justify-center gap-2">
+                          <CheckCircle2 className="w-4 h-4 text-success" />
+                          <span className="text-success font-medium">{item.egestor}</span>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </section>
+  );
+};
+
+export default ComparisonTable;
