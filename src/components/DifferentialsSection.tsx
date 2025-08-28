@@ -25,7 +25,7 @@ const DifferentialsSection = () => {
     content: `Enquanto franquias pedem R$ 80-200 mil iniciais, você investe menos de R$ 1.000 mensais. 
       É o investimento mais seguro possível, com escalabilidade e lucro em potencial muito maior que a média do mercado.`
   }];
-  return <section className="py-8 md:py-16 bg-[#f6f1f1]">
+  return <section className="py-8 md:py-16 bg-white">
       <div className="container max-w-6xl mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center mb-8 md:mb-12">
           <div>
@@ -47,9 +47,9 @@ const DifferentialsSection = () => {
                   <div className="p-2 sm:p-3 rounded-lg bg-transparent">
                     <span className="text-2xl">{item.icon}</span>
                   </div>
-                  <Badge variant="outline" className="text-accent border-accent font-bold text-xs sm:text-sm">
+                  <h3 className="text-lg sm:text-xl font-bold text-foreground mb-3 md:mb-4">
                     {item.title}
-                  </Badge>
+                  </h3>
                 </div>
               </CardHeader>
               <CardContent className="pt-0">
@@ -60,12 +60,14 @@ const DifferentialsSection = () => {
             </Card>)}
         </div>
 
-        <Card style={{
+        <Card className="mt-8 md:mt-12 border-0 shadow-lg bg-gradient-to-r from-muted/30 to-secondary/30" style={{
         boxShadow: 'var(--card-shadow)'
-      }} className="mt-8 md:mt-12 border-0  bg-transparent">
-          <CardContent className="p-4 sm:p-6 md:p-8 bg-transparent">
+      }}>
+          <CardContent className="p-4 sm:p-6 md:p-8">
             <div className="text-center mb-4 md:mb-6">
-              
+              <Badge variant="outline" className="text-primary border-primary mb-3 md:mb-4 text-xs sm:text-sm">
+                PESQUISA DE MERCADO
+              </Badge>
             </div>
             <blockquote className="text-base sm:text-lg italic text-center text-muted-foreground border-l-4 border-primary pl-4 sm:pl-6">
               "O mercado brasileiro de pequenas empresas representa uma oportunidade única para fornecedores de ERP, 
