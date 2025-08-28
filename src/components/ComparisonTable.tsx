@@ -44,9 +44,7 @@ const ComparisonTable = () => {
   }];
   return <section className="py-8 md:py-16 bg-white">
       <div className="container max-w-6xl mx-auto px-4 md:px-6">
-        <Card className="border-0 shadow-lg overflow-hidden" style={{
-        boxShadow: 'var(--card-shadow)'
-      }}>
+        <Card className="border-0 shadow-none overflow-hidden">
           <CardHeader className="text-center pb-4 md:pb-8 px-4 md:px-6 bg-transparent">
             <CardTitle className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground">
               Comparação: Franquia vs. eGestor

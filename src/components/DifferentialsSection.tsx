@@ -39,9 +39,7 @@ const DifferentialsSection = () => {
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 md:gap-8">
-          {differentials.map((item, index) => <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-shadow" style={{
-          boxShadow: 'var(--card-shadow)'
-        }}>
+          {differentials.map((item, index) => <Card key={index} className="border-0 shadow-none bg-white">
               <CardHeader className="pb-3 md:pb-4">
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 mb-3 md:mb-4">
                   <div className="p-2 sm:p-3 rounded-lg bg-transparent">
@@ -60,9 +58,7 @@ const DifferentialsSection = () => {
             </Card>)}
         </div>
 
-        <Card className="mt-8 md:mt-12 border-0 shadow-lg bg-gradient-to-r from-muted/30 to-secondary/30" style={{
-        boxShadow: 'var(--card-shadow)'
-      }}>
+        <Card className="mt-8 md:mt-12 border-0 shadow-none bg-gradient-to-r from-muted/30 to-secondary/30">
           <CardContent className="p-4 sm:p-6 md:p-8">
             <div className="text-center mb-4 md:mb-6">
               <Badge variant="outline" className="text-primary border-primary mb-3 md:mb-4 text-xs sm:text-sm">

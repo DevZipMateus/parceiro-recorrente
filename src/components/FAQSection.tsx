@@ -36,7 +36,7 @@ const FAQSection = () => {
 
         <div className="space-y-4 md:space-y-6">
           {faqs.map((faq, index) => (
-            <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-shadow" style={{ boxShadow: 'var(--card-shadow)' }}>
+            <Card key={index} className="border-0 shadow-none bg-white">
               <CardHeader className="pb-3 md:pb-4 px-4 md:px-6">
                 <CardTitle className="flex items-start gap-3 md:gap-4 text-base md:text-lg">
                   <span className="text-lg flex-shrink-0">❓</span>
