@@ -125,8 +125,7 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply text-foreground;
-    background: var(--page-gradient);
+    @apply text-foreground bg-background;
     font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
     min-height: 100vh;
   }

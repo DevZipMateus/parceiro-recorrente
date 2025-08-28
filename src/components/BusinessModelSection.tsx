@@ -13,7 +13,7 @@ const BusinessModelSection = () => {
   ];
 
   return (
-    <section className="py-8 md:py-16 bg-background">
+    <section className="py-8 md:py-16">
       <div className="container max-w-4xl mx-auto px-4 md:px-6">
         <Card className="border-0 shadow-lg" style={{ boxShadow: 'var(--card-shadow)' }}>
           <CardHeader className="text-center pb-4 md:pb-8 px-4 md:px-6">

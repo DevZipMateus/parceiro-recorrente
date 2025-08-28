@@ -33,7 +33,7 @@ const DifferentialsSection = () => {
   ];
 
   return (
-    <section className="py-8 md:py-16 bg-gradient-to-b from-secondary/30 to-background">
+    <section className="py-8 md:py-16">
       <div className="container max-w-6xl mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center mb-8 md:mb-12">
           <div>
@@ -72,7 +72,7 @@ const DifferentialsSection = () => {
           ))}
         </div>
 
-        <Card className="mt-8 md:mt-12 border-0 shadow-lg bg-gradient-to-r from-muted/30 to-secondary/30" style={{ boxShadow: 'var(--card-shadow)' }}>
+        <Card className="mt-8 md:mt-12 border-0 shadow-lg" style={{ boxShadow: 'var(--card-shadow)' }}>
           <CardContent className="p-4 sm:p-6 md:p-8">
             <div className="text-center mb-4 md:mb-6">
               <Badge variant="outline" className="text-primary border-primary mb-3 md:mb-4 text-xs sm:text-sm">

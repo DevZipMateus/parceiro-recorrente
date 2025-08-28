@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 
 const CTASection = () => {
   return (
-    <section className="py-8 md:py-16 bg-gradient-to-br from-primary/5 to-accent/5">
+    <section className="py-8 md:py-16">
       <div className="container max-w-4xl mx-auto px-4 md:px-6">
         <div className="text-center mb-8 md:mb-12">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-4 md:mb-6 font-sans">
