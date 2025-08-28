@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { TrendingUp, HeadphonesIcon, Users, Target } from "lucide-react";
+import workspaceImage from "@/assets/workspace-analytics.jpg";
 
 const DifferentialsSection = () => {
   const differentials = [
@@ -35,10 +36,19 @@ const DifferentialsSection = () => {
   return (
     <section className="py-8 md:py-16 bg-gradient-to-b from-secondary/30 to-background">
       <div className="container max-w-6xl mx-auto px-4 md:px-6">
-        <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-4 px-2">
-            Aqui está o que torna esse modelo diferente de tudo que você já viu:
-          </h2>
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center mb-8 md:mb-12">
+          <div>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-4 px-2">
+              Aqui está o que torna esse modelo diferente de tudo que você já viu:
+            </h2>
+          </div>
+          <div className="relative">
+            <img 
+              src={workspaceImage} 
+              alt="Workspace moderno com gráficos de crescimento e análises financeiras representando eficiência empresarial"
+              className="w-full h-auto rounded-2xl shadow-xl"
+            />
+          </div>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 md:gap-8">

@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import businessImage from "@/assets/business-meeting.jpg";
 
 const AboutSection = () => {
   const clientTypes = [
@@ -10,15 +11,26 @@ const AboutSection = () => {
 
   return (
     <section className="py-8 md:py-16 bg-gradient-to-b from-background to-secondary/30">
-      <div className="container max-w-4xl mx-auto px-4 md:px-6">
-        <Card className="border-0 shadow-lg" style={{ boxShadow: 'var(--card-shadow)' }}>
-          <CardHeader className="text-center pb-4 md:pb-8 px-4 md:px-6">
+      <div className="container max-w-6xl mx-auto px-4 md:px-6">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center mb-8">
+          <div>
             <Badge variant="outline" className="mb-3 md:mb-4 text-accent border-accent text-xs sm:text-sm">
               20 ANOS DE EXPERIÊNCIA
             </Badge>
-            <CardTitle className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-4 md:mb-6 leading-tight">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-4 md:mb-6 leading-tight">
               Há 20 anos ajudamos mais de 20.000 pequenas empresas a organizarem suas finanças através do eGestor.
-            </CardTitle>
+            </h2>
+          </div>
+          <div className="relative">
+            <img 
+              src={businessImage} 
+              alt="Reunião de negócios com profissionais discutindo estratégias de crescimento financeiro"
+              className="w-full h-auto rounded-2xl shadow-xl"
+            />
+          </div>
+        </div>
+        <Card className="border-0 shadow-lg" style={{ boxShadow: 'var(--card-shadow)' }}>
+          <CardHeader className="text-center pb-4 md:pb-8 px-4 md:px-6">
           </CardHeader>
           <CardContent className="space-y-6 md:space-y-8 px-4 md:px-6">
             <div>

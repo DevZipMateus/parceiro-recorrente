@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle } from "lucide-react";
+import familyImage from "@/assets/family-success.jpg";
 
 const TargetAudienceSection = () => {
   const targetPoints = [
@@ -12,12 +13,23 @@ const TargetAudienceSection = () => {
 
   return (
     <section className="py-8 md:py-16 bg-gradient-to-b from-secondary/30 to-background">
-      <div className="container max-w-4xl mx-auto px-4 md:px-6">
+      <div className="container max-w-6xl mx-auto px-4 md:px-6">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center mb-8">
+          <div className="relative order-2 lg:order-1">
+            <img 
+              src={familyImage} 
+              alt="Família próspera em casa moderna representando estabilidade financeira e qualidade de vida"
+              className="w-full h-auto rounded-2xl shadow-xl"
+            />
+          </div>
+          <div className="order-1 lg:order-2">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-6">
+              Esse modelo de negócio é ideal para quem:
+            </h2>
+          </div>
+        </div>
         <Card className="border-0 shadow-lg" style={{ boxShadow: 'var(--card-shadow)' }}>
           <CardHeader className="text-center pb-4 md:pb-8 px-4 md:px-6">
-            <CardTitle className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-4">
-              Esse modelo de negócio é ideal para quem:
-            </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4 md:space-y-6 px-4 md:px-6">
             <ul className="space-y-3 md:space-y-4">
