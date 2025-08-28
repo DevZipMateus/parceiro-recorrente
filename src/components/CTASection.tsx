@@ -3,10 +3,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-
 const CTASection = () => {
-  return (
-    <section className="py-8 md:py-16 bg-gradient-to-br from-primary/5 to-accent/5">
+  return <section className="py-8 md:py-16 bg-gradient-to-br from-primary/5 to-accent/5">
       <div className="container max-w-4xl mx-auto px-4 md:px-6">
         <div className="text-center mb-8 md:mb-12">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-4 md:mb-6 font-sans">
@@ -21,7 +19,9 @@ const CTASection = () => {
           </p>
         </div>
 
-        <Card className="border-0 shadow-xl" style={{ boxShadow: 'var(--accent-shadow)' }}>
+        <Card className="border-0 shadow-xl" style={{
+        boxShadow: 'var(--accent-shadow)'
+      }}>
           <CardContent className="p-4 sm:p-6 md:p-8">
             <form className="space-y-4 md:space-y-6">
               <div className="grid gap-4 md:grid-cols-2 md:gap-6">
@@ -29,24 +29,13 @@ const CTASection = () => {
                   <Label htmlFor="fullName" className="text-sm font-medium">
                     Nome completo *
                   </Label>
-                  <Input 
-                    id="fullName"
-                    placeholder="Digite seu nome completo"
-                    className="mt-1 md:mt-2 h-11 md:h-10"
-                    required
-                  />
+                  <Input id="fullName" placeholder="Digite seu nome completo" className="mt-1 md:mt-2 h-11 md:h-10" required />
                 </div>
                 <div>
                   <Label htmlFor="emailAddress" className="text-sm font-medium">
                     E-mail *
                   </Label>
-                  <Input 
-                    id="emailAddress"
-                    type="email"
-                    placeholder="Digite seu melhor e-mail"
-                    className="mt-1 md:mt-2 h-11 md:h-10"
-                    required
-                  />
+                  <Input id="emailAddress" type="email" placeholder="Digite seu melhor e-mail" className="mt-1 md:mt-2 h-11 md:h-10" required />
                 </div>
               </div>
 
@@ -55,22 +44,13 @@ const CTASection = () => {
                   <Label htmlFor="phoneNumber" className="text-sm font-medium">
                     WhatsApp *
                   </Label>
-                  <Input 
-                    id="phoneNumber"
-                    placeholder="(11) 99999-9999"
-                    className="mt-1 md:mt-2 h-11 md:h-10"
-                    required
-                  />
+                  <Input id="phoneNumber" placeholder="(11) 99999-9999" className="mt-1 md:mt-2 h-11 md:h-10" required />
                 </div>
                 <div>
                   <Label htmlFor="city" className="text-sm font-medium">
                     Cidade
                   </Label>
-                  <Input 
-                    id="city"
-                    placeholder="Sua cidade"
-                    className="mt-1 md:mt-2 h-11 md:h-10"
-                  />
+                  <Input id="city" placeholder="Sua cidade" className="mt-1 md:mt-2 h-11 md:h-10" />
                 </div>
               </div>
 
@@ -78,22 +58,14 @@ const CTASection = () => {
                 <Label htmlFor="experience" className="text-sm font-medium">
                   Conte um pouco sobre sua experiência profissional
                 </Label>
-                <Textarea 
-                  id="experience"
-                  placeholder="Ex: Trabalho há 10 anos com vendas, atualmente em uma empresa de..."
-                  className="mt-1 md:mt-2 min-h-[80px] md:min-h-[100px]"
-                />
+                <Textarea id="experience" placeholder="Ex: Trabalho há 10 anos com vendas, atualmente em uma empresa de..." className="mt-1 md:mt-2 min-h-[80px] md:min-h-[100px]" />
               </div>
 
               <div className="flex flex-col gap-3 pt-2 md:pt-4">
-                <Button 
-                  type="submit" 
-                  size="lg" 
-                  className="w-full h-12 md:h-auto bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-sm md:text-lg py-3 md:py-6 font-sans uppercase"
-                >
-                  <span className="mr-2">📞</span>
+                <Button type="submit" size="lg" className="w-full h-12 md:h-auto bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-sm md:text-lg py-3 md:py-6 font-sans uppercase">
+                  
                   QUERO CONVERSAR AGORA
-                  <span className="ml-2">➡️</span>
+                  
                 </Button>
               </div>
 
@@ -116,8 +88,6 @@ const CTASection = () => {
           </CardContent>
         </Card>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default CTASection;
