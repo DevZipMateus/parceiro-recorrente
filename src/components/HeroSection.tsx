@@ -1,13 +1,13 @@
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-professional.jpg";
 const HeroSection = () => {
-  return <section className="min-h-[600px] md:min-h-[700px] bg-white py-12 md:py-16">
+  return <section className="min-h-[600px] md:min-h-[700px] bg-gradient-to-br from-background to-secondary/30 py-12 md:py-16">
       <div className="container max-w-6xl mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
           <div className="space-y-6 md:space-y-8">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground leading-tight font-sans">
               Conheça um modelo de negócio{" "}
-              <span className="text-primary bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-[FF6B35] text-[#ff6b35]">
                 melhor que franquia
               </span>
             </h1>
