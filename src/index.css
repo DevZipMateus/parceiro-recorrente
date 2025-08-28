@@ -22,44 +22,44 @@ All colors MUST be HSL.
     /* Page background gradient */
     --page-gradient: linear-gradient(90deg, #ebfff3, #fff0eb);
     
-    /* Updated semantic tokens to use brand colors */
+    /* Updated semantic tokens to use brand colors with better contrast */
     --background: 0 6% 96%;
-    --foreground: 300 2% 30%;
+    --foreground: 300 2% 20%;
 
     --card: 0 0% 100%;
-    --card-foreground: 300 2% 30%;
+    --card-foreground: 300 2% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 300 2% 30%;
+    --popover-foreground: 300 2% 20%;
 
-    --primary: 140 100% 73%;
-    --primary-foreground: 0 0% 0%;
+    --primary: 140 80% 40%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 6% 96%;
-    --secondary-foreground: 300 2% 30%;
+    --secondary: 0 6% 94%;
+    --secondary-foreground: 300 2% 20%;
 
-    --muted: 0 6% 96%;
-    --muted-foreground: 300 2% 50%;
+    --muted: 0 6% 94%;
+    --muted-foreground: 300 2% 35%;
 
-    --accent: 15 100% 60%;
+    --accent: 15 85% 50%;
     --accent-foreground: 0 0% 100%;
 
-    --success: 140 100% 73%;
-    --success-foreground: 0 0% 0%;
+    --success: 140 70% 35%;
+    --success-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 6% 90%;
-    --input: 0 6% 90%;
-    --ring: 140 100% 73%;
+    --border: 0 6% 88%;
+    --input: 0 6% 88%;
+    --ring: 140 80% 40%;
 
-    /* Brand gradients and shadows */
-    --hero-gradient: linear-gradient(135deg, hsl(140 100% 73%), hsl(140 100% 78%));
-    --accent-gradient: linear-gradient(135deg, hsl(15 100% 60%), hsl(15 100% 65%));
-    --section-bg: linear-gradient(180deg, hsl(140 100% 97%), hsl(0 6% 98%));
-    --card-shadow: 0 4px 20px -2px hsl(140 100% 73% / 0.1);
-    --accent-shadow: 0 4px 20px -2px hsl(15 100% 60% / 0.15);
+    /* Brand gradients and shadows with better contrast */
+    --hero-gradient: linear-gradient(135deg, hsl(140 80% 40%), hsl(140 80% 45%));
+    --accent-gradient: linear-gradient(135deg, hsl(15 85% 50%), hsl(15 85% 55%));
+    --section-bg: linear-gradient(180deg, hsl(140 30% 98%), hsl(0 6% 98%));
+    --card-shadow: 0 4px 20px -2px hsl(300 2% 20% / 0.08);
+    --accent-shadow: 0 4px 20px -2px hsl(15 85% 50% / 0.15);
 
     --radius: 0.5rem;
 
