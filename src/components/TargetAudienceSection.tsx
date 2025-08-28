@@ -11,7 +11,7 @@ const TargetAudienceSection = () => {
   ];
 
   return (
-    <section className="py-8 md:py-16">
+    <section className="py-8 md:py-16 bg-gradient-to-b from-secondary/30 to-background">
       <div className="container max-w-6xl mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center mb-8">
           <div className="relative order-2 lg:order-1">
