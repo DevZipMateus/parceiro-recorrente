@@ -3,25 +3,21 @@ import { Badge } from "@/components/ui/badge";
 import workspaceImage from "@/assets/workspace-analytics.jpg";
 const DifferentialsSection = () => {
   const differentials = [{
-    icon: "📈",
-    title: "RECEITA RECORRENTE REAL",
+    title: "📈 Receita recorrente real",
     content: `Cada empresa que você conquistar vai pagar mensalmente. Assim que você alcançar 50 clientes 
       pagando R$ 279,90/mês terá R$ 13.995,00 mensais recorrentes. No mês seguinte você já começa com esse valor garantido. 
       Mas o melhor desse modelo de negócio são as margens… Sem precisar de ponto comercial, funcionários e insumos você paga 
       apenas o imposto sobre a receita e o valor por licença contratada para revender, deixando uma margem de lucro acima de 
       50% da operação que vai diretamente para seu bolso e para o patrimônio de sua família.`
   }, {
-    icon: "🎧",
-    title: "SUPORTE TOTAL",
+    title: "🎧 Suporte total",
     content: `Nós fazemos as primeiras vendas junto com você. Oferecemos suporte técnico para todos os seus clientes. 
       Você foca apenas em vender e manter o relacionamento com seu cliente.`
   }, {
-    icon: "👥",
-    title: "MERCADO GIGANTESCO",
+    title: "👥 Mercado gigantesco",
     content: `Existem milhões de pequenas empresas no Brasil que ainda controlam tudo na planilha ou usam sistemas ultrapassados.`
   }, {
-    icon: "🎯",
-    title: "INVESTIMENTO REALISTA",
+    title: "🎯 Investimento realista",
     content: `Enquanto franquias pedem R$ 80-200 mil iniciais, você investe menos de R$ 1.000 mensais. 
       É o investimento mais seguro possível, com escalabilidade e lucro em potencial muito maior que a média do mercado.`
   }];
@@ -47,9 +43,9 @@ const DifferentialsSection = () => {
                   <div className="p-2 sm:p-3 rounded-lg bg-transparent">
                     <span className="text-2xl">{item.icon}</span>
                   </div>
-                  <h3 className="text-lg sm:text-xl font-bold text-foreground mb-3 md:mb-4">
+                  <Badge variant="outline" className="text-accent border-accent font-bold text-xs sm:text-sm">
                     {item.title}
-                  </h3>
+                  </Badge>
                 </div>
               </CardHeader>
               <CardContent className="pt-0">
