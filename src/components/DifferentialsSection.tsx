@@ -60,9 +60,7 @@ const DifferentialsSection = () => {
 
         <Card className="mt-8 md:mt-12 border-0 shadow-none bg-gradient-to-r from-muted/30 to-secondary/30">
           <CardContent className="p-4 sm:p-6 md:p-8">
-            <div className="text-center mb-4 md:mb-6">
-              
-            </div>
+
             <blockquote className="text-base sm:text-lg italic text-center text-muted-foreground border-l-4 border-primary pl-4 sm:pl-6">
               "O mercado brasileiro de pequenas empresas representa uma oportunidade única para fornecedores de ERP, 
               com mais de 13 milhões de empresas ainda dependendo de controles manuais e 11,9 milhões sem qualquer 
