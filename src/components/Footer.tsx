@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer className="bg-white border-t border-gray-100 py-8">
       <div className="container max-w-6xl mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-center md:text-left">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-center md:text-left items-end">
           <div className="space-y-2">
             <p className="text-gray-600 text-sm">
               eGestor é desenvolvido por Zipline Tecnologia Ltda.
@@ -13,7 +13,7 @@ const Footer = () => {
               CNPJ 04.693.497/0001-21
             </p>
           </div>
-          <div className="md:text-right">
+          <div className="md:text-right flex items-end justify-center md:justify-end">
             <p className="text-gray-600 text-sm">
               © {currentYear} eGestor - Sistema Online de Gestão Empresarial
             </p>
