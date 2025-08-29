@@ -16,8 +16,8 @@ const HeroSection = () => {
               investindo 50x menos que franquias tradicionais e com muito mais estabilidade
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold font-sans uppercase text-base px-8 py-4 h-auto">
-                DESCUBRA COMO FUNCIONA
+              <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold font-sans text-base px-8 py-4 h-auto">
+                Descubra como funciona
               </Button>
               
             </div>

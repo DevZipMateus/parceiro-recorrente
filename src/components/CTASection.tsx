@@ -62,9 +62,9 @@ const CTASection = () => {
               </div>
 
               <div className="flex flex-col gap-3 pt-2 md:pt-4">
-                <Button type="submit" size="lg" className="w-full h-12 md:h-auto bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-sm md:text-lg py-3 md:py-6 font-sans uppercase">
+                <Button type="submit" size="lg" className="w-full h-12 md:h-auto bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-sm md:text-lg py-3 md:py-6 font-sans">
                   
-                  QUERO CONVERSAR AGORA
+                  Quero conversar agora
                   
                 </Button>
               </div>
