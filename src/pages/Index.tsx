@@ -7,6 +7,7 @@ import ComparisonTable from "@/components/ComparisonTable";
 import DifferentialsSection from "@/components/DifferentialsSection";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
@@ -20,6 +21,7 @@ const Index = () => {
       <DifferentialsSection />
       <FAQSection />
       <CTASection />
+      <Footer />
     </div>
   );
 };
