@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-const familyImage = "/lovable-uploads/807365e0-82b2-45f1-96b0-eb7f104951af.png";
+import familyImage from "@/assets/family-planning-future.jpg";
 const TargetAudienceSection = () => {
   const targetPoints = ["Trabalha há anos, é bom no que faz, mas sente que não tem como seguir crescendo no seu trabalho atual", "Tem planos de aumentar a família, mas isso gera insegurança financeira.", "Já pesquisou franquias mas ficou assustado com investimentos de R$ 80 mil, R$ 150 mil, R$ 300 mil ou mais…", "Tem medo de chegar aos 60 anos e descobrir que não é capaz de manter o mesmo padrão de vida com o teto do INSS", "Sabe que precisa de novas fontes de renda mas não quer arriscar todas suas economias."];
   return <section className="py-8 md:py-16 bg-white">

@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-const heroImage = "/lovable-uploads/6316f0c0-4df1-4d94-bc51-d76c0a35c3a2.png";
+import heroImage from "@/assets/hero-business-contrast.jpg";
 const HeroSection = () => {
   return <section className="min-h-[600px] md:min-h-[700px] bg-gradient-to-br from-background to-secondary/30 py-12 md:py-16">
       <div className="container max-w-6xl mx-auto px-4 md:px-6">
