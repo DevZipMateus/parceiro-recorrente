@@ -41,18 +41,18 @@ const CTASection = () => {
       // Debug: Log dos valores antes do envio
       console.log("Dados do formulário:", formData);
 
-      // Atualizar os inputs nativos hidden com os valores atuais
-      const salesInput = document.querySelector('input[name="sales_experience"]') as HTMLInputElement;
-      const investmentInput = document.querySelector('input[name="investment_range"]') as HTMLInputElement;
+      // Atualizar os campos personalizados do RD Station com os nomes corretos
+      const experienciaInput = document.querySelector('input[name="cf_experiencia_em_vendas"]') as HTMLInputElement;
+      const investimentoInput = document.querySelector('input[name="cf_faixa_de_investimento"]') as HTMLInputElement;
       
-      if (salesInput) {
-        salesInput.value = formData.salesExperience;
-        console.log("Valor sales_experience atualizado:", salesInput.value);
+      if (experienciaInput) {
+        experienciaInput.value = formData.salesExperience;
+        console.log("Valor cf_experiencia_em_vendas atualizado:", experienciaInput.value);
       }
       
-      if (investmentInput) {
-        investmentInput.value = formData.investmentRange;
-        console.log("Valor investment_range atualizado:", investmentInput.value);
+      if (investimentoInput) {
+        investimentoInput.value = formData.investmentRange;
+        console.log("Valor cf_faixa_de_investimento atualizado:", investimentoInput.value);
       }
 
       toast({
@@ -109,13 +109,9 @@ const CTASection = () => {
               <input type="hidden" name="utm_medium" value="landing-page" />
               <input type="hidden" name="utm_campaign" value="franquia-zipline" />
               
-              {/* Campos nativos hidden para o RD Station capturar */}
-              <input type="hidden" name="sales_experience" value="" />
-              <input type="hidden" name="investment_range" value="" />
-              
-              {/* Backup: campos com prefixo cf_ caso necessário */}
-              <input type="hidden" name="cf_sales_experience" value={formData.salesExperience} />
-              <input type="hidden" name="cf_investment_range" value={formData.investmentRange} />
+              {/* Campos personalizados do RD Station */}
+              <input type="hidden" name="cf_experiencia_em_vendas" value={formData.salesExperience} />
+              <input type="hidden" name="cf_faixa_de_investimento" value={formData.investmentRange} />
               <div className="grid gap-4 md:grid-cols-2 md:gap-6">
                 <div>
                   <Label htmlFor="fullName" className="text-sm font-medium">
@@ -190,11 +186,11 @@ const CTASection = () => {
                   name="sales_experience"
                 >
                   <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="sim" id="sim" />
+                    <RadioGroupItem value="Sim" id="sim" />
                     <Label htmlFor="sim" className="text-sm font-normal cursor-pointer">Sim</Label>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="nao" id="nao" />
+                    <RadioGroupItem value="Não" id="nao" />
                     <Label htmlFor="nao" className="text-sm font-normal cursor-pointer">Não</Label>
                   </div>
                 </RadioGroup>
@@ -213,10 +209,10 @@ const CTASection = () => {
                     <SelectValue placeholder="Escolha sua faixa de investimento" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="100-150">De 100.000 a 150.000</SelectItem>
-                    <SelectItem value="150-200">De 150.000 a 200.000</SelectItem>
-                    <SelectItem value="200-300">De 200.000 a 300.000</SelectItem>
-                    <SelectItem value="300+">Superior a 300.000</SelectItem>
+                    <SelectItem value="De 100.000 a 150.000">De 100.000 a 150.000</SelectItem>
+                    <SelectItem value="De 150.000 a 200.000">De 150.000 a 200.000</SelectItem>
+                    <SelectItem value="De 200.000 a 300.000">De 200.000 a 300.000</SelectItem>
+                    <SelectItem value="Superior a 300.000">Superior a 300.000</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
