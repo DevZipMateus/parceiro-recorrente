@@ -38,42 +38,22 @@ const CTASection = () => {
         return;
       }
 
-      // Integração direta com RD Station API
-      const payload = {
-        token: "004614e99c43a7bca7b23af79bdcae34",
-        conversion_identifier: "formulario-parceiro-zipline",
-        name: formData.name,
-        email: formData.email,
-        mobile_phone: formData.phone,
-        job_title: formData.profession,
-        cf_sales_experience: formData.salesExperience,
-        cf_investment_range: formData.investmentRange
-      };
+      // O script do RD Station capturará automaticamente através dos atributos name
+      // Aguardar um pouco para o script processar
+      await new Promise(resolve => setTimeout(resolve, 500));
 
-      const response = await fetch("https://www.rdstation.com.br/api/1.3/conversions", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
+      toast({
+        title: "Sucesso!",
+        description: "Seus dados foram enviados. Entraremos em contato em breve!",
       });
 
-      if (response.ok) {
-        toast({
-          title: "Sucesso!",
-          description: "Seus dados foram enviados. Entraremos em contato em breve!",
-        });
-
-        // Redirecionar para a página de login após 2 segundos
-        setTimeout(() => {
-          window.location.href = "http://parceiros.zipline.com.br/login.php";
-        }, 2000);
-      } else {
-        throw new Error("Erro na API do RD Station");
-      }
+      // Redirecionar para a página de login após 2 segundos
+      setTimeout(() => {
+        window.location.href = "http://parceiros.zipline.com.br/login.php";
+      }, 2000);
 
     } catch (error) {
-      console.error("Erro ao enviar para RD Station:", error);
+      console.error("Erro ao enviar formulário:", error);
       toast({
         title: "Erro",
         description: "Ocorreu um erro ao enviar o formulário. Tente novamente.",
@@ -104,6 +84,9 @@ const CTASection = () => {
       }}>
           <CardContent className="p-4 sm:p-6 md:p-8">
             <form onSubmit={handleSubmit} data-form-type="embedded" className="space-y-4 md:space-y-6">
+              {/* Campos hidden para identificação do RD Station */}
+              <input type="hidden" name="token" value="004614e99c43a7bca7b23af79bdcae34" />
+              <input type="hidden" name="identificador" value="formulario-parceiro-zipline" />
               <div className="grid gap-4 md:grid-cols-2 md:gap-6">
                 <div>
                   <Label htmlFor="fullName" className="text-sm font-medium">
