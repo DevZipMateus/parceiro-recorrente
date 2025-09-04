@@ -25,6 +25,7 @@ const CTASection = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault(); // Prevenir submissão padrão do formulário
     setIsLoading(true);
 
     try {
@@ -36,7 +37,6 @@ const CTASection = () => {
           variant: "destructive",
         });
         setIsLoading(false);
-        e.preventDefault();
         return;
       }
 
@@ -60,7 +60,6 @@ const CTASection = () => {
         description: "Ocorreu um erro ao enviar o formulário. Tente novamente.",
         variant: "destructive",
       });
-      e.preventDefault();
     } finally {
       setIsLoading(false);
     }
