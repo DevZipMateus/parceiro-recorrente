@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import ActionButton from "@/components/ActionButton";
 import workspaceImage from "@/assets/workspace-professional.jpg";
 const DifferentialsSection = () => {
   const differentials = [{
@@ -68,6 +69,8 @@ const DifferentialsSection = () => {
             </blockquote>
           </CardContent>
         </Card>
+        
+        <ActionButton />
       </div>
     </section>;
 };

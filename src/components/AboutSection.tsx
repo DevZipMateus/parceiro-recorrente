@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import ActionButton from "@/components/ActionButton";
 import businessImage from "@/assets/business-team-collaboration.jpg";
 const AboutSection = () => {
   const clientTypes = ["Profissionais experientes de marketing e vendas buscando uma nova fonte de receita", "Pessoas que já tentaram outras oportunidades sem sucesso", "Quem queria sair da dependência do salário mas tinha receio de 'arriscar' muito dinheiro"];
@@ -47,6 +48,8 @@ const AboutSection = () => {
             </div>
           </CardContent>
         </Card>
+        
+        <ActionButton />
       </div>
     </section>;
 };

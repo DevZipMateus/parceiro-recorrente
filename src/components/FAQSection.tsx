@@ -1,4 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import ActionButton from "@/components/ActionButton";
 
 const FAQSection = () => {
   const faqs = [
@@ -51,6 +52,8 @@ const FAQSection = () => {
             </Card>
           ))}
         </div>
+        
+        <ActionButton />
       </div>
     </section>
   );

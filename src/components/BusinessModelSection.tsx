@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import ActionButton from "@/components/ActionButton";
 const BusinessModelSection = () => {
   const benefits = ["Você investe menos de R$ 1.000 por mês (menos que muitas franquias cobram só de taxa mensal)", "Seus clientes ativos pagam TODO MÊS - criando uma receita previsível que só cresce", "Você não precisa de ponto comercial, estoque ou funcionários", "A sazonalidade não influencia no faturamento da sua empresa", "Você pode trabalhar de casa, da praia ou de qualquer lugar", "Seu produto nunca quebra, estraga ou sai de moda", "O mercado tem milhões de clientes em potencial, já que toda pequena empresa precisa"];
   return <section className="py-8 md:py-16 bg-white">
@@ -30,6 +31,8 @@ const BusinessModelSection = () => {
             </div>
           </CardContent>
         </Card>
+        
+        <ActionButton />
       </div>
     </section>;
 };

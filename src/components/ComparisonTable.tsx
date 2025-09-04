@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import ActionButton from "@/components/ActionButton";
 const ComparisonTable = () => {
   const comparisons = [{
     aspect: "Investimento inicial",
@@ -107,6 +108,8 @@ const ComparisonTable = () => {
             </div>
           </CardContent>
         </Card>
+        
+        <ActionButton />
       </div>
     </section>;
 };
