@@ -1,11 +1,8 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { useNavigate } from "react-router-dom";
 
 const ThankYou = () => {
-  const navigate = useNavigate();
 
   return (
     <>
@@ -38,17 +35,6 @@ const ThankYou = () => {
                       ></iframe>
                     </div>
                   </div>
-                </div>
-
-                <div className="pt-4 animate-fade-in animate-stagger-4">
-                  <Button 
-                    onClick={() => navigate('/')}
-                    variant="outline"
-                    size="lg"
-                    className="px-8 py-4 h-auto font-semibold hover-glow smooth-transition hover:scale-105"
-                  >
-                    Voltar para o site
-                  </Button>
                 </div>
               </div>
             </CardContent>
