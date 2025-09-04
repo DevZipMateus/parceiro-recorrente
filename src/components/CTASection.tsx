@@ -41,20 +41,6 @@ const CTASection = () => {
       // Debug: Log dos valores antes do envio
       console.log("Dados do formulário:", formData);
 
-      // Atualizar os campos personalizados do RD Station com os nomes corretos
-      const experienciaInput = document.querySelector('input[name="cf_experiencia_em_vendas"]') as HTMLInputElement;
-      const investimentoInput = document.querySelector('input[name="cf_faixa_de_investimento"]') as HTMLInputElement;
-      
-      if (experienciaInput) {
-        experienciaInput.value = formData.salesExperience;
-        console.log("Valor cf_experiencia_em_vendas atualizado:", experienciaInput.value);
-      }
-      
-      if (investimentoInput) {
-        investimentoInput.value = formData.investmentRange;
-        console.log("Valor cf_faixa_de_investimento atualizado:", investimentoInput.value);
-      }
-
       toast({
         title: "Sucesso!",
         description: "Seus dados foram enviados. Entraremos em contato em breve!",
@@ -109,9 +95,6 @@ const CTASection = () => {
               <input type="hidden" name="utm_medium" value="landing-page" />
               <input type="hidden" name="utm_campaign" value="franquia-zipline" />
               
-              {/* Campos personalizados do RD Station */}
-              <input type="hidden" name="cf_experiencia_em_vendas" value={formData.salesExperience} />
-              <input type="hidden" name="cf_faixa_de_investimento" value={formData.investmentRange} />
               <div className="grid gap-4 md:grid-cols-2 md:gap-6">
                 <div>
                   <Label htmlFor="fullName" className="text-sm font-medium">
@@ -183,7 +166,7 @@ const CTASection = () => {
                   value={formData.salesExperience} 
                   onValueChange={(value) => handleInputChange("salesExperience", value)}
                   className="flex gap-6"
-                  name="sales_experience"
+                  name="cf_experiencia_em_vendas"
                 >
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="Sim" id="sim" />
@@ -203,7 +186,7 @@ const CTASection = () => {
                 <Select 
                   value={formData.investmentRange} 
                   onValueChange={(value) => handleInputChange("investmentRange", value)}
-                  name="investment_range"
+                  name="cf_faixa_de_investimento"
                 >
                   <SelectTrigger className="mt-1 md:mt-2 h-11 md:h-10">
                     <SelectValue placeholder="Escolha sua faixa de investimento" />
