@@ -38,18 +38,42 @@ const CTASection = () => {
         return;
       }
 
-      // O RD Station capturará automaticamente os dados através dos atributos name
-      toast({
-        title: "Sucesso!",
-        description: "Seus dados foram enviados. Entraremos em contato em breve!",
+      // Integração direta com RD Station API
+      const payload = {
+        token: "004614e99c43a7bca7b23af79bdcae34",
+        conversion_identifier: "formulario-parceiro-zipline",
+        name: formData.name,
+        email: formData.email,
+        mobile_phone: formData.phone,
+        job_title: formData.profession,
+        cf_sales_experience: formData.salesExperience,
+        cf_investment_range: formData.investmentRange
+      };
+
+      const response = await fetch("https://www.rdstation.com.br/api/1.3/conversions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
       });
 
-      // Redirecionar para a página de login após 2 segundos
-      setTimeout(() => {
-        window.location.href = "http://parceiros.zipline.com.br/login.php";
-      }, 2000);
+      if (response.ok) {
+        toast({
+          title: "Sucesso!",
+          description: "Seus dados foram enviados. Entraremos em contato em breve!",
+        });
+
+        // Redirecionar para a página de login após 2 segundos
+        setTimeout(() => {
+          window.location.href = "http://parceiros.zipline.com.br/login.php";
+        }, 2000);
+      } else {
+        throw new Error("Erro na API do RD Station");
+      }
 
     } catch (error) {
+      console.error("Erro ao enviar para RD Station:", error);
       toast({
         title: "Erro",
         description: "Ocorreu um erro ao enviar o formulário. Tente novamente.",
