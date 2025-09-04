@@ -36,10 +36,10 @@ const FAQSection = () => {
 
         <div className="space-y-4 md:space-y-6">
           {faqs.map((faq, index) => (
-            <Card key={index} className="border-0 shadow-none bg-white">
+            <Card key={index} className="border-0 shadow-none bg-white hover-lift group">
               <CardHeader className="pb-3 md:pb-4 px-4 md:px-6">
                 <CardTitle className="flex items-start gap-3 md:gap-4 text-base md:text-lg">
-                  <span className="text-lg flex-shrink-0">❓</span>
+                  <span className="text-lg flex-shrink-0 bounce-transition group-hover:animate-bounce-subtle">❓</span>
                   <span className="leading-relaxed">{faq.question}</span>
                 </CardTitle>
               </CardHeader>

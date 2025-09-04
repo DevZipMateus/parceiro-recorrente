@@ -12,8 +12,8 @@ const BusinessModelSection = () => {
           </CardHeader>
           <CardContent className="space-y-4 md:space-y-6 px-4 md:px-6">
             <div className="grid gap-3 md:gap-4">
-              {benefits.map((benefit, index) => <div key={index} className="flex gap-3 md:gap-4 items-start p-3 md:p-4 rounded-lg py-[10px]">
-                  <span className="text-lg flex-shrink-0">✅</span>
+              {benefits.map((benefit, index) => <div key={index} className="flex gap-3 md:gap-4 items-start p-3 md:p-4 rounded-lg py-[10px] hover-lift group">
+                  <span className="text-lg flex-shrink-0 bounce-transition group-hover:animate-bounce-subtle">✅</span>
                   <span className="text-foreground leading-relaxed text-sm md:text-base">{benefit}</span>
                 </div>)}
             </div>

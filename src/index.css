@@ -60,6 +60,14 @@ All colors MUST be HSL.
     --section-bg: linear-gradient(180deg, hsl(140 30% 98%), hsl(0 6% 98%));
     --card-shadow: 0 4px 20px -2px hsl(300 2% 20% / 0.08);
     --accent-shadow: 0 4px 20px -2px hsl(15 85% 50% / 0.15);
+    --hover-shadow: 0 8px 30px -4px hsl(300 2% 20% / 0.12);
+    --glow-shadow: 0 0 0 0 hsl(140 80% 40% / 0);
+    --active-glow: 0 0 20px hsl(140 80% 40% / 0.25);
+
+    /* Animation tokens */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --radius: 0.5rem;
 
@@ -129,5 +137,44 @@ All colors MUST be HSL.
     background: var(--page-gradient);
     font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
     min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  /* Micro-interaction utilities */
+  .hover-lift {
+    @apply transition-all duration-300 ease-out hover:scale-[1.02] hover:shadow-[var(--hover-shadow)];
+  }
+  
+  .hover-glow {
+    @apply transition-shadow duration-300 ease-out hover:shadow-[var(--active-glow)];
+  }
+  
+  .focus-glow {
+    @apply focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:shadow-[var(--active-glow)];
+  }
+  
+  .smooth-transition {
+    transition: var(--transition-smooth);
+  }
+  
+  .fast-transition {
+    transition: var(--transition-fast);
+  }
+  
+  .bounce-transition {
+    transition: var(--transition-bounce);
+  }
+  
+  .animate-stagger-1 {
+    animation-delay: 0.1s;
+  }
+  
+  .animate-stagger-2 {
+    animation-delay: 0.2s;
+  }
+  
+  .animate-stagger-3 {
+    animation-delay: 0.3s;
   }
 }

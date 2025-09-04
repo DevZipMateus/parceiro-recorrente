@@ -34,15 +34,15 @@ const DifferentialsSection = () => {
             </h2>
           </div>
           <div className="relative">
-            <img src={workspaceImage} alt="Workspace moderno com gráficos de crescimento e análises financeiras representando eficiência empresarial" className="w-full h-auto rounded-2xl shadow-xl" />
+            <img src={workspaceImage} alt="Workspace moderno com gráficos de crescimento e análises financeiras representando eficiência empresarial" className="w-full h-auto rounded-2xl shadow-xl smooth-transition hover:scale-105 hover:shadow-[var(--hover-shadow)]" />
           </div>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 md:gap-8">
-          {differentials.map((item, index) => <Card key={index} className="border-0 shadow-none bg-white">
+          {differentials.map((item, index) => <Card key={index} className="border-0 shadow-none bg-white hover-lift group">
               <CardHeader className="pb-3 md:pb-4">
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 mb-3 md:mb-4">
-                  <div className="p-2 sm:p-3 rounded-lg bg-transparent">
+                  <div className="p-2 sm:p-3 rounded-lg bg-transparent bounce-transition group-hover:animate-bounce-subtle">
                     <span className="text-2xl">{item.icon}</span>
                   </div>
                   <h3 className="font-bold">

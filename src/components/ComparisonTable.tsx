@@ -85,7 +85,7 @@ const ComparisonTable = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {comparisons.map((item, index) => <tr key={index} className="border-b border-border hover:bg-muted/20 transition-colors">
+                  {comparisons.map((item, index) => <tr key={index} className="border-b border-border hover:bg-muted/20 fast-transition group">
                       <td className="p-3 md:p-6 font-medium text-foreground bg-muted/10 text-sm md:text-base">
                         {item.aspect}
                       </td>

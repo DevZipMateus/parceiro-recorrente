@@ -6,7 +6,7 @@ const Header = () => {
           <img 
             src="/lovable-uploads/64ee0fee-8327-4514-9bc3-ffc42fb0c2b4.png" 
             alt="Egestor Representação - Logo" 
-            className="h-12 w-auto"
+            className="h-12 w-auto smooth-transition hover:scale-105 hover:brightness-110"
           />
         </div>
       </div>

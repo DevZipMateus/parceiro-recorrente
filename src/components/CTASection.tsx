@@ -106,7 +106,7 @@ const CTASection = () => {
                     value={formData.name}
                     onChange={(e) => handleInputChange("name", e.target.value)}
                     placeholder="Digite seu nome" 
-                    className="mt-1 md:mt-2 h-11 md:h-10" 
+                    className="mt-1 md:mt-2 h-11 md:h-10 focus-glow fast-transition" 
                     required 
                   />
                 </div>
@@ -121,7 +121,7 @@ const CTASection = () => {
                     value={formData.email}
                     onChange={(e) => handleInputChange("email", e.target.value)}
                     placeholder="Digite seu email" 
-                    className="mt-1 md:mt-2 h-11 md:h-10" 
+                    className="mt-1 md:mt-2 h-11 md:h-10 focus-glow fast-transition" 
                     required 
                   />
                 </div>
@@ -138,7 +138,7 @@ const CTASection = () => {
                     value={formData.phone}
                     onChange={(e) => handleInputChange("phone", e.target.value)}
                     placeholder="(11) 99999-9999" 
-                    className="mt-1 md:mt-2 h-11 md:h-10" 
+                    className="mt-1 md:mt-2 h-11 md:h-10 focus-glow fast-transition" 
                     required 
                   />
                 </div>
@@ -152,7 +152,7 @@ const CTASection = () => {
                     value={formData.profession}
                     onChange={(e) => handleInputChange("profession", e.target.value)}
                     placeholder="Sua profissão" 
-                    className="mt-1 md:mt-2 h-11 md:h-10" 
+                    className="mt-1 md:mt-2 h-11 md:h-10 focus-glow fast-transition" 
                     required 
                   />
                 </div>
@@ -205,7 +205,7 @@ const CTASection = () => {
                   type="submit" 
                   size="lg" 
                   disabled={isLoading}
-                  className="w-full h-12 md:h-auto bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-sm md:text-lg py-3 md:py-6 font-sans"
+                  className="w-full h-12 md:h-auto bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-sm md:text-lg py-3 md:py-6 font-sans hover-glow smooth-transition hover:scale-[1.02] disabled:opacity-50 disabled:hover:scale-100"
                 >
                   {isLoading ? "Enviando..." : "Quero conversar agora"}
                 </Button>
