@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
-// import heroImage from "@/assets/hero-professional.jpg";
-const heroImage = "/lovable-uploads/c73605d7-fbaf-4324-9535-c67ed5e45981.png";
+import heroImage from "@/assets/hero-professional.jpg";
 const HeroSection = () => {
   return <section className="min-h-[600px] md:min-h-[700px] bg-gradient-to-br from-background to-secondary/30 py-12 md:py-16">
       <div className="container max-w-6xl mx-auto px-4 md:px-6">
