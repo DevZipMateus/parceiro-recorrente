@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import businessImage from "@/assets/business-meeting.jpg";
 const AboutSection = () => {
   const clientTypes = ["Profissionais experientes de marketing e vendas buscando uma nova fonte de receita", "Pessoas que já tentaram outras oportunidades sem sucesso", "Quem queria sair da dependência do salário mas tinha receio de 'arriscar' muito dinheiro"];
   return <section className="py-8 md:py-16 bg-white">
@@ -14,7 +15,7 @@ const AboutSection = () => {
             </h2>
           </div>
           <div className="relative">
-            <img src="/lovable-uploads/64ee0fee-8327-4514-9bc3-ffc42fb0c2b4.png" alt="Três profissionais diversos representando a variedade de representantes bem-sucedidos" className="w-full h-auto rounded-2xl shadow-xl" />
+            <img src={businessImage} alt="Reunião de negócios com profissionais discutindo estratégias de crescimento financeiro" className="w-full h-auto rounded-2xl shadow-xl" />
           </div>
         </div>
         <Card className="border-0 shadow-none">
