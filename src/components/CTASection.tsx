@@ -86,7 +86,11 @@ const CTASection = () => {
             <form onSubmit={handleSubmit} data-form-type="embedded" className="space-y-4 md:space-y-6">
               {/* Campos hidden para identificação do RD Station */}
               <input type="hidden" name="token" value="004614e99c43a7bca7b23af79bdcae34" />
-              <input type="hidden" name="identificador" value="formulario-parceiro-zipline" />
+              <input type="hidden" name="identificador" value="form-franquia" />
+              
+              {/* Campos hidden para capturar dados dos componentes Radix UI */}
+              <input type="hidden" name="sales_experience" value={formData.salesExperience} />
+              <input type="hidden" name="investment_range" value={formData.investmentRange} />
               <div className="grid gap-4 md:grid-cols-2 md:gap-6">
                 <div>
                   <Label htmlFor="fullName" className="text-sm font-medium">
