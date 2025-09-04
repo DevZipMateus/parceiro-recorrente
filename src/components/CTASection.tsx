@@ -88,11 +88,15 @@ const CTASection = () => {
               <input type="hidden" name="token" value="004614e99c43a7bca7b23af79bdcae34" />
               <input type="hidden" name="identificador" value="form-franquia" />
               <input type="hidden" name="conversion_identifier" value="form-franquia" />
-              <input type="hidden" name="traffic_source" value="lp-franquia" />
               
-              {/* Campos hidden para capturar dados dos componentes Radix UI */}
-              <input type="hidden" name="sales_experience" value={formData.salesExperience} />
-              <input type="hidden" name="investment_range" value={formData.investmentRange} />
+              {/* Campos UTM para origem no RD Station */}
+              <input type="hidden" name="utm_source" value="lp-franquia" />
+              <input type="hidden" name="utm_medium" value="landing-page" />
+              <input type="hidden" name="utm_campaign" value="franquia-zipline" />
+              
+              {/* Campos personalizados para capturar dados dos componentes Radix UI */}
+              <input type="hidden" name="cf_sales_experience" value={formData.salesExperience} />
+              <input type="hidden" name="cf_investment_range" value={formData.investmentRange} />
               <div className="grid gap-4 md:grid-cols-2 md:gap-6">
                 <div>
                   <Label htmlFor="fullName" className="text-sm font-medium">
