@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import businessImage from "@/assets/diverse-team-collaboration.jpg";
+import businessImage from "@/assets/business-team-collaboration.jpg";
 const AboutSection = () => {
   const clientTypes = ["Profissionais experientes de marketing e vendas buscando uma nova fonte de receita", "Pessoas que já tentaram outras oportunidades sem sucesso", "Quem queria sair da dependência do salário mas tinha receio de 'arriscar' muito dinheiro"];
   return <section className="py-8 md:py-16 bg-white">

@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-business-contrast.jpg";
+import heroImage from "@/assets/hero-business-professional.jpg";
 import { useEffect } from "react";
 import { trackVisit } from "@/utils/analytics";
 const HeroSection = () => {

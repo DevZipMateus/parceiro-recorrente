@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import workspaceImage from "@/assets/workspace-analytics.jpg";
+import workspaceImage from "@/assets/workspace-professional.jpg";
 const DifferentialsSection = () => {
   const differentials = [{
     icon: "📈",
