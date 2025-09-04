@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-professional.jpg";
 const HeroSection = () => {
   return <section className="min-h-[600px] md:min-h-[700px] bg-gradient-to-br from-background to-secondary/30 py-12 md:py-16">
       <div className="container max-w-6xl mx-auto px-4 md:px-6">
@@ -24,7 +23,7 @@ const HeroSection = () => {
           </div>
 
           <div className="relative">
-            <img src={heroImage} alt="Profissional de sucesso em escritório moderno demonstrando estabilidade financeira e qualidade de vida" className="w-full h-auto rounded-2xl shadow-2xl" />
+            <img src="/lovable-uploads/64ee0fee-8327-4514-9bc3-ffc42fb0c2b4.png" alt="Comparação visual entre franquia tradicional e novo modelo de negócio mais acessível" className="w-full h-auto rounded-2xl shadow-2xl" />
             
           </div>
         </div>
