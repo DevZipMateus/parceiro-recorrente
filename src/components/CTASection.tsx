@@ -6,6 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { useNavigate } from "react-router-dom";
 const CTASection = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -17,6 +18,7 @@ const CTASection = () => {
   });
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -46,11 +48,10 @@ const CTASection = () => {
         description: "Seus dados foram enviados. Entraremos em contato em breve!",
       });
 
-      // Permitir que o formulário seja submetido nativamente para o RD Station
-      // Redirecionar após um delay para o RD Station processar
+      // Redirecionar para página de agradecimento após um delay
       setTimeout(() => {
-        window.location.href = "http://parceiros.zipline.com.br/login.php";
-      }, 3000);
+        navigate('/obrigado');
+      }, 2000);
 
     } catch (error) {
       console.error("Erro ao enviar formulário:", error);
