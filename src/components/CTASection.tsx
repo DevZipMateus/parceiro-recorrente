@@ -4,7 +4,62 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 const CTASection = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    profession: "",
+    salesExperience: "",
+    investmentRange: ""
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    try {
+      // Validação básica
+      if (!formData.name || !formData.email || !formData.phone || !formData.profession || !formData.salesExperience || !formData.investmentRange) {
+        toast({
+          title: "Erro",
+          description: "Por favor, preencha todos os campos obrigatórios.",
+          variant: "destructive",
+        });
+        setIsLoading(false);
+        return;
+      }
+
+      // O RD Station capturará automaticamente os dados através dos atributos name
+      toast({
+        title: "Sucesso!",
+        description: "Seus dados foram enviados. Entraremos em contato em breve!",
+      });
+
+      // Redirecionar para a página de login após 2 segundos
+      setTimeout(() => {
+        window.location.href = "http://parceiros.zipline.com.br/login.php";
+      }, 2000);
+
+    } catch (error) {
+      toast({
+        title: "Erro",
+        description: "Ocorreu um erro ao enviar o formulário. Tente novamente.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return <section className="py-8 md:py-16 bg-gradient-to-br from-primary/5 to-accent/5">
       <div className="container max-w-4xl mx-auto px-4 md:px-6">
         <div className="text-center mb-8 md:mb-12">
@@ -24,19 +79,36 @@ const CTASection = () => {
         boxShadow: 'var(--accent-shadow)'
       }}>
           <CardContent className="p-4 sm:p-6 md:p-8">
-            <form className="space-y-4 md:space-y-6">
+            <form onSubmit={handleSubmit} data-form-type="embedded" className="space-y-4 md:space-y-6">
               <div className="grid gap-4 md:grid-cols-2 md:gap-6">
                 <div>
                   <Label htmlFor="fullName" className="text-sm font-medium">
                     Nome *
                   </Label>
-                  <Input id="fullName" placeholder="Digite seu nome" className="mt-1 md:mt-2 h-11 md:h-10" required />
+                  <Input 
+                    id="fullName" 
+                    name="name"
+                    value={formData.name}
+                    onChange={(e) => handleInputChange("name", e.target.value)}
+                    placeholder="Digite seu nome" 
+                    className="mt-1 md:mt-2 h-11 md:h-10" 
+                    required 
+                  />
                 </div>
                 <div>
                   <Label htmlFor="emailAddress" className="text-sm font-medium">
                     Email *
                   </Label>
-                  <Input id="emailAddress" type="email" placeholder="Digite seu email" className="mt-1 md:mt-2 h-11 md:h-10" required />
+                  <Input 
+                    id="emailAddress" 
+                    name="email"
+                    type="email" 
+                    value={formData.email}
+                    onChange={(e) => handleInputChange("email", e.target.value)}
+                    placeholder="Digite seu email" 
+                    className="mt-1 md:mt-2 h-11 md:h-10" 
+                    required 
+                  />
                 </div>
               </div>
 
@@ -45,13 +117,29 @@ const CTASection = () => {
                   <Label htmlFor="phoneNumber" className="text-sm font-medium">
                     Telefone *
                   </Label>
-                  <Input id="phoneNumber" placeholder="(11) 99999-9999" className="mt-1 md:mt-2 h-11 md:h-10" required />
+                  <Input 
+                    id="phoneNumber" 
+                    name="mobile_phone"
+                    value={formData.phone}
+                    onChange={(e) => handleInputChange("phone", e.target.value)}
+                    placeholder="(11) 99999-9999" 
+                    className="mt-1 md:mt-2 h-11 md:h-10" 
+                    required 
+                  />
                 </div>
                 <div>
                   <Label htmlFor="profession" className="text-sm font-medium">
                     Profissão *
                   </Label>
-                  <Input id="profession" placeholder="Sua profissão" className="mt-1 md:mt-2 h-11 md:h-10" required />
+                  <Input 
+                    id="profession" 
+                    name="job_title"
+                    value={formData.profession}
+                    onChange={(e) => handleInputChange("profession", e.target.value)}
+                    placeholder="Sua profissão" 
+                    className="mt-1 md:mt-2 h-11 md:h-10" 
+                    required 
+                  />
                 </div>
               </div>
 
@@ -59,7 +147,12 @@ const CTASection = () => {
                 <Label className="text-sm font-medium mb-3 block">
                   Tem experiência em vendas? *
                 </Label>
-                <RadioGroup defaultValue="" className="flex gap-6">
+                <RadioGroup 
+                  value={formData.salesExperience} 
+                  onValueChange={(value) => handleInputChange("salesExperience", value)}
+                  className="flex gap-6"
+                  name="sales_experience"
+                >
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="sim" id="sim" />
                     <Label htmlFor="sim" className="text-sm font-normal cursor-pointer">Sim</Label>
@@ -75,7 +168,11 @@ const CTASection = () => {
                 <Label htmlFor="investment" className="text-sm font-medium">
                   Selecione a faixa de investimento *
                 </Label>
-                <Select>
+                <Select 
+                  value={formData.investmentRange} 
+                  onValueChange={(value) => handleInputChange("investmentRange", value)}
+                  name="investment_range"
+                >
                   <SelectTrigger className="mt-1 md:mt-2 h-11 md:h-10">
                     <SelectValue placeholder="Escolha sua faixa de investimento" />
                   </SelectTrigger>
@@ -89,10 +186,13 @@ const CTASection = () => {
               </div>
 
               <div className="flex flex-col gap-3 pt-2 md:pt-4">
-                <Button type="submit" size="lg" className="w-full h-12 md:h-auto bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-sm md:text-lg py-3 md:py-6 font-sans">
-                  
-                  Quero conversar agora
-                  
+                <Button 
+                  type="submit" 
+                  size="lg" 
+                  disabled={isLoading}
+                  className="w-full h-12 md:h-auto bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-sm md:text-lg py-3 md:py-6 font-sans"
+                >
+                  {isLoading ? "Enviando..." : "Quero conversar agora"}
                 </Button>
               </div>
 
