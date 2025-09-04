@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-professional.jpg";
+const heroImage = "/lovable-uploads/6316f0c0-4df1-4d94-bc51-d76c0a35c3a2.png";
 const HeroSection = () => {
   return <section className="min-h-[600px] md:min-h-[700px] bg-gradient-to-br from-background to-secondary/30 py-12 md:py-16">
       <div className="container max-w-6xl mx-auto px-4 md:px-6">
@@ -24,7 +24,7 @@ const HeroSection = () => {
           </div>
 
           <div className="relative">
-            <img src={heroImage} alt="Contraste visual mostrando vantagens do modelo de negócio comparado às franquias tradicionais" className="w-full h-auto rounded-2xl shadow-2xl" />
+            <img src={heroImage} alt="Contraste entre investimento em franquia tradicional versus modelo de negócio mais acessível e lucrativo" className="w-full h-auto rounded-2xl shadow-2xl" />
             
           </div>
         </div>
