@@ -87,6 +87,8 @@ const CTASection = () => {
               {/* Campos hidden para identificação do RD Station */}
               <input type="hidden" name="token" value="004614e99c43a7bca7b23af79bdcae34" />
               <input type="hidden" name="identificador" value="form-franquia" />
+              <input type="hidden" name="conversion_identifier" value="form-franquia" />
+              <input type="hidden" name="traffic_source" value="lp-franquia" />
               
               {/* Campos hidden para capturar dados dos componentes Radix UI */}
               <input type="hidden" name="sales_experience" value={formData.salesExperience} />
