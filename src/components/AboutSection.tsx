@@ -15,7 +15,7 @@ const AboutSection = () => {
             </h2>
           </div>
           <div className="relative">
-            <img src={businessImage} alt="Equipe diversa de profissionais colaborando para o sucesso nos negócios" className="w-full h-auto rounded-2xl shadow-xl" />
+            <img src={businessImage} alt="Equipe diversa de profissionais colaborando para o sucesso nos negócios" className="w-full h-auto rounded-2xl" />
           </div>
         </div>
         <Card className="border-0 shadow-none">

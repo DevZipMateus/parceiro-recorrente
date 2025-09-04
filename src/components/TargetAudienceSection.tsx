@@ -6,7 +6,7 @@ const TargetAudienceSection = () => {
       <div className="container max-w-6xl mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center mb-8">
           <div className="relative order-2 lg:order-1">
-            <img src={familyImage} alt="Família planejando crescimento e estabilidade financeira para o futuro" className="w-full h-auto rounded-2xl shadow-xl" />
+            <img src={familyImage} alt="Família planejando crescimento e estabilidade financeira para o futuro" className="w-full h-auto rounded-2xl" />
           </div>
           <div className="order-1 lg:order-2">
             <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-6">

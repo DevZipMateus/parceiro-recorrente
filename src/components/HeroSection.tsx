@@ -38,7 +38,7 @@ const HeroSection = () => {
           </div>
 
           <div className="relative animate-scale-in animate-stagger-2">
-            <img src={heroImage} alt="Contraste entre investimento em franquia tradicional versus modelo de negócio mais acessível e lucrativo" className="w-full h-auto rounded-2xl shadow-2xl smooth-transition hover:scale-105 hover:shadow-[var(--hover-shadow)]" />
+            <img src={heroImage} alt="Contraste entre investimento em franquia tradicional versus modelo de negócio mais acessível e lucrativo" className="w-full h-auto rounded-2xl smooth-transition hover:scale-105" />
             
           </div>
         </div>

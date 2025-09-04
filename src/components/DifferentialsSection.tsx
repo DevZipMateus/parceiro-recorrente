@@ -34,7 +34,7 @@ const DifferentialsSection = () => {
             </h2>
           </div>
           <div className="relative">
-            <img src={workspaceImage} alt="Workspace moderno com gráficos de crescimento e análises financeiras representando eficiência empresarial" className="w-full h-auto rounded-2xl shadow-xl smooth-transition hover:scale-105 hover:shadow-[var(--hover-shadow)]" />
+            <img src={workspaceImage} alt="Workspace moderno com gráficos de crescimento e análises financeiras representando eficiência empresarial" className="w-full h-auto rounded-2xl smooth-transition hover:scale-105" />
           </div>
         </div>
 
