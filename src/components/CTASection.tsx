@@ -23,7 +23,6 @@ const CTASection = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
     setIsLoading(true);
 
     try {
@@ -35,22 +34,37 @@ const CTASection = () => {
           variant: "destructive",
         });
         setIsLoading(false);
+        e.preventDefault();
         return;
       }
 
-      // O script do RD Station capturará automaticamente através dos atributos name
-      // Aguardar um pouco para o script processar
-      await new Promise(resolve => setTimeout(resolve, 500));
+      // Debug: Log dos valores antes do envio
+      console.log("Dados do formulário:", formData);
+
+      // Atualizar os inputs nativos hidden com os valores atuais
+      const salesInput = document.querySelector('input[name="sales_experience"]') as HTMLInputElement;
+      const investmentInput = document.querySelector('input[name="investment_range"]') as HTMLInputElement;
+      
+      if (salesInput) {
+        salesInput.value = formData.salesExperience;
+        console.log("Valor sales_experience atualizado:", salesInput.value);
+      }
+      
+      if (investmentInput) {
+        investmentInput.value = formData.investmentRange;
+        console.log("Valor investment_range atualizado:", investmentInput.value);
+      }
 
       toast({
         title: "Sucesso!",
         description: "Seus dados foram enviados. Entraremos em contato em breve!",
       });
 
-      // Redirecionar para a página de login após 2 segundos
+      // Permitir que o formulário seja submetido nativamente para o RD Station
+      // Redirecionar após um delay para o RD Station processar
       setTimeout(() => {
         window.location.href = "http://parceiros.zipline.com.br/login.php";
-      }, 2000);
+      }, 3000);
 
     } catch (error) {
       console.error("Erro ao enviar formulário:", error);
@@ -59,6 +73,7 @@ const CTASection = () => {
         description: "Ocorreu um erro ao enviar o formulário. Tente novamente.",
         variant: "destructive",
       });
+      e.preventDefault();
     } finally {
       setIsLoading(false);
     }
@@ -94,7 +109,11 @@ const CTASection = () => {
               <input type="hidden" name="utm_medium" value="landing-page" />
               <input type="hidden" name="utm_campaign" value="franquia-zipline" />
               
-              {/* Campos personalizados para capturar dados dos componentes Radix UI */}
+              {/* Campos nativos hidden para o RD Station capturar */}
+              <input type="hidden" name="sales_experience" value="" />
+              <input type="hidden" name="investment_range" value="" />
+              
+              {/* Backup: campos com prefixo cf_ caso necessário */}
               <input type="hidden" name="cf_sales_experience" value={formData.salesExperience} />
               <input type="hidden" name="cf_investment_range" value={formData.investmentRange} />
               <div className="grid gap-4 md:grid-cols-2 md:gap-6">
