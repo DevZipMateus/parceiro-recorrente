@@ -16,7 +16,14 @@ const HeroSection = () => {
               investindo 50x menos que franquias tradicionais e com muito mais estabilidade
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4 animate-slide-up animate-stagger-3">
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold font-sans text-base px-8 py-4 h-auto hover-glow smooth-transition hover:scale-105">
+              <Button 
+                size="lg" 
+                className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold font-sans text-base px-8 py-4 h-auto hover-glow smooth-transition hover:scale-105"
+                onClick={() => {
+                  const targetSection = document.getElementById('target-audience');
+                  targetSection?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
                 Descubra como funciona
               </Button>
               
