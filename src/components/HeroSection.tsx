@@ -1,6 +1,13 @@
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-business-contrast.jpg";
+import { useEffect } from "react";
+import { trackVisit } from "@/utils/analytics";
 const HeroSection = () => {
+  useEffect(() => {
+    // Track visit when component mounts
+    trackVisit();
+  }, []);
+
   return <section className="min-h-[600px] md:min-h-[700px] bg-gradient-to-br from-background to-secondary/30 py-12 md:py-16">
       <div className="container max-w-6xl mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">

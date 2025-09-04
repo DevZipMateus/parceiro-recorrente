@@ -7,6 +7,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { useNavigate } from "react-router-dom";
+import { trackLead } from "@/utils/analytics";
 const CTASection = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -40,8 +41,15 @@ const CTASection = () => {
         return;
       }
 
-      // Debug: Log dos valores antes do envio
-      console.log("Dados do formulário:", formData);
+      // Track lead conversion
+      await trackLead({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        profession: formData.profession,
+        sales_experience: formData.salesExperience,
+        investment_range: formData.investmentRange,
+      });
 
       toast({
         title: "Sucesso!",
