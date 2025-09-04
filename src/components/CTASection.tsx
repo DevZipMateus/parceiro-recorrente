@@ -2,7 +2,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 const CTASection = () => {
   return <section className="py-8 md:py-16 bg-gradient-to-br from-primary/5 to-accent/5">
       <div className="container max-w-4xl mx-auto px-4 md:px-6">
@@ -27,38 +28,64 @@ const CTASection = () => {
               <div className="grid gap-4 md:grid-cols-2 md:gap-6">
                 <div>
                   <Label htmlFor="fullName" className="text-sm font-medium">
-                    Nome completo *
+                    Nome *
                   </Label>
-                  <Input id="fullName" placeholder="Digite seu nome completo" className="mt-1 md:mt-2 h-11 md:h-10" required />
+                  <Input id="fullName" placeholder="Digite seu nome" className="mt-1 md:mt-2 h-11 md:h-10" required />
                 </div>
                 <div>
                   <Label htmlFor="emailAddress" className="text-sm font-medium">
-                    E-mail *
+                    Email *
                   </Label>
-                  <Input id="emailAddress" type="email" placeholder="Digite seu melhor e-mail" className="mt-1 md:mt-2 h-11 md:h-10" required />
+                  <Input id="emailAddress" type="email" placeholder="Digite seu email" className="mt-1 md:mt-2 h-11 md:h-10" required />
                 </div>
               </div>
 
               <div className="grid gap-4 md:grid-cols-2 md:gap-6">
                 <div>
                   <Label htmlFor="phoneNumber" className="text-sm font-medium">
-                    WhatsApp *
+                    Telefone *
                   </Label>
                   <Input id="phoneNumber" placeholder="(11) 99999-9999" className="mt-1 md:mt-2 h-11 md:h-10" required />
                 </div>
                 <div>
-                  <Label htmlFor="city" className="text-sm font-medium">
-                    Cidade
+                  <Label htmlFor="profession" className="text-sm font-medium">
+                    Profissão *
                   </Label>
-                  <Input id="city" placeholder="Sua cidade" className="mt-1 md:mt-2 h-11 md:h-10" />
+                  <Input id="profession" placeholder="Sua profissão" className="mt-1 md:mt-2 h-11 md:h-10" required />
                 </div>
               </div>
 
               <div>
-                <Label htmlFor="experience" className="text-sm font-medium">
-                  Conte um pouco sobre sua experiência profissional
+                <Label className="text-sm font-medium mb-3 block">
+                  Tem experiência em vendas? *
                 </Label>
-                <Textarea id="experience" placeholder="Ex: Trabalho há 10 anos com vendas, atualmente em uma empresa de..." className="mt-1 md:mt-2 min-h-[80px] md:min-h-[100px]" />
+                <RadioGroup defaultValue="" className="flex gap-6">
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="sim" id="sim" />
+                    <Label htmlFor="sim" className="text-sm font-normal cursor-pointer">Sim</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="nao" id="nao" />
+                    <Label htmlFor="nao" className="text-sm font-normal cursor-pointer">Não</Label>
+                  </div>
+                </RadioGroup>
+              </div>
+
+              <div>
+                <Label htmlFor="investment" className="text-sm font-medium">
+                  Selecione a faixa de investimento *
+                </Label>
+                <Select>
+                  <SelectTrigger className="mt-1 md:mt-2 h-11 md:h-10">
+                    <SelectValue placeholder="Escolha sua faixa de investimento" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="100-150">De 100.000 a 150.000</SelectItem>
+                    <SelectItem value="150-200">De 150.000 a 200.000</SelectItem>
+                    <SelectItem value="200-300">De 200.000 a 300.000</SelectItem>
+                    <SelectItem value="300+">Superior a 300.000</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
 
               <div className="flex flex-col gap-3 pt-2 md:pt-4">
