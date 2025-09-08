@@ -20,7 +20,7 @@ const ComparisonTable = () => {
   }, {
     aspect: "Custos fixos",
     franchise: "Aluguel, funcionários, estoque",
-    egestor: "Verificar os custos iniciais",
+    egestor: "Sem custos fixos",
     advantage: "egestor"
   }, {
     aspect: "Flexibilidade",
