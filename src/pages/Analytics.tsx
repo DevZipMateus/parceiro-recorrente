@@ -2,12 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Calendar } from '@/components/ui/calendar';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line } from 'recharts';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/contexts/AuthContext';
 import { format, subDays, startOfDay, endOfDay } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
+import { CalendarIcon } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 interface AnalyticsData {
   totalVisits: number;
@@ -27,14 +31,25 @@ const Analytics = () => {
     timeSeriesData: [],
   });
   const [period, setPeriod] = useState('7');
+  const [dateFrom, setDateFrom] = useState<Date | undefined>(subDays(new Date(), 7));
+  const [dateTo, setDateTo] = useState<Date | undefined>(new Date());
+  const [filterType, setFilterType] = useState<'preset' | 'custom'>('preset');
   const [loading, setLoading] = useState(true);
 
   const fetchAnalytics = async () => {
     setLoading(true);
     try {
-      const days = parseInt(period);
-      const startDate = startOfDay(subDays(new Date(), days));
-      const endDate = endOfDay(new Date());
+      let startDate: Date;
+      let endDate: Date;
+      
+      if (filterType === 'preset') {
+        const days = parseInt(period);
+        startDate = startOfDay(subDays(new Date(), days));
+        endDate = endOfDay(new Date());
+      } else {
+        startDate = dateFrom ? startOfDay(dateFrom) : startOfDay(subDays(new Date(), 7));
+        endDate = dateTo ? endOfDay(dateTo) : endOfDay(new Date());
+      }
 
       // Fetch visits
       const { data: visits, error: visitsError } = await supabase
@@ -83,8 +98,10 @@ const Analytics = () => {
 
       // Time series data
       const timeMap = new Map();
-      for (let i = 0; i < days; i++) {
-        const date = format(subDays(new Date(), i), 'yyyy-MM-dd');
+      const daysDiff = Math.ceil((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
+      
+      for (let i = 0; i <= daysDiff; i++) {
+        const date = format(subDays(endDate, i), 'yyyy-MM-dd');
         timeMap.set(date, { date, visits: 0, leads: 0 });
       }
 
@@ -122,7 +139,7 @@ const Analytics = () => {
 
   useEffect(() => {
     fetchAnalytics();
-  }, [period]);
+  }, [period, dateFrom, dateTo, filterType]);
 
   const COLORS = ['hsl(var(--primary))', 'hsl(var(--secondary))', 'hsl(var(--accent))', '#8884d8', '#82ca9d', '#ffc658'];
 
@@ -149,17 +166,81 @@ const Analytics = () => {
         </div>
 
         {/* Filters */}
-        <div className="flex gap-4">
-          <Select value={period} onValueChange={setPeriod}>
+        <div className="flex flex-wrap gap-4 items-center">
+          <Select value={filterType} onValueChange={(value: 'preset' | 'custom') => setFilterType(value)}>
             <SelectTrigger className="w-48">
-              <SelectValue placeholder="Selecione o período" />
+              <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="7">Últimos 7 dias</SelectItem>
-              <SelectItem value="30">Últimos 30 dias</SelectItem>
-              <SelectItem value="90">Últimos 90 dias</SelectItem>
+              <SelectItem value="preset">Períodos Pré-definidos</SelectItem>
+              <SelectItem value="custom">Período Personalizado</SelectItem>
             </SelectContent>
           </Select>
+
+          {filterType === 'preset' ? (
+            <Select value={period} onValueChange={setPeriod}>
+              <SelectTrigger className="w-48">
+                <SelectValue placeholder="Selecione o período" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="7">Últimos 7 dias</SelectItem>
+                <SelectItem value="30">Últimos 30 dias</SelectItem>
+                <SelectItem value="90">Últimos 90 dias</SelectItem>
+              </SelectContent>
+            </Select>
+          ) : (
+            <div className="flex gap-2 items-center">
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button
+                    variant="outline"
+                    className={cn(
+                      "w-[240px] justify-start text-left font-normal",
+                      !dateFrom && "text-muted-foreground"
+                    )}
+                  >
+                    <CalendarIcon className="mr-2 h-4 w-4" />
+                    {dateFrom ? format(dateFrom, "dd/MM/yyyy") : "Data inicial"}
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0" align="start">
+                  <Calendar
+                    mode="single"
+                    selected={dateFrom}
+                    onSelect={setDateFrom}
+                    initialFocus
+                    className="p-3 pointer-events-auto"
+                  />
+                </PopoverContent>
+              </Popover>
+
+              <span className="text-muted-foreground">até</span>
+
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button
+                    variant="outline"
+                    className={cn(
+                      "w-[240px] justify-start text-left font-normal",
+                      !dateTo && "text-muted-foreground"
+                    )}
+                  >
+                    <CalendarIcon className="mr-2 h-4 w-4" />
+                    {dateTo ? format(dateTo, "dd/MM/yyyy") : "Data final"}
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0" align="start">
+                  <Calendar
+                    mode="single"
+                    selected={dateTo}
+                    onSelect={setDateTo}
+                    initialFocus
+                    className="p-3 pointer-events-auto"
+                  />
+                </PopoverContent>
+              </Popover>
+            </div>
+          )}
         </div>
 
         {/* KPIs */}
