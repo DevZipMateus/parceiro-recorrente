@@ -11,7 +11,7 @@ const FAQSection = () => {
     },
     {
       question: "E se eu não conseguir clientes?",
-      answer: `Com menos de R$ 1.000 mensais de investimento, o risco é mínimo comparado a qualquer franquia. 
+      answer: `Com a partir de R$ 1.000,00 mensais de investimento, o risco é mínimo comparado a qualquer franquia. 
       Além disso, nossa equipe faz as primeiras vendas junto com você.`
     },
     {

@@ -23,7 +23,7 @@ const DifferentialsSection = () => {
   }, {
     icon: "🎯",
     title: "INVESTIMENTO REALISTA",
-    content: `Enquanto franquias pedem R$ 80-200 mil iniciais, você investe menos de R$ 1.000 mensais. 
+    content: `Enquanto franquias pedem R$ 80-200 mil iniciais, você investe a partir de R$ 1.000,00 mensais. 
       É o investimento mais seguro possível, com escalabilidade e lucro em potencial muito maior que a média do mercado.`
   }];
   return <section className="py-8 md:py-16 bg-white">
