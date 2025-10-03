@@ -13,7 +13,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/contexts/AuthContext';
 import { format, subDays, startOfDay, endOfDay, parseISO } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
-import { CalendarIcon, Plus, Trash2 } from 'lucide-react';
+import { CalendarIcon, Plus, Trash2, Edit } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
 
@@ -51,6 +51,8 @@ const Analytics = () => {
   const [annotations, setAnnotations] = useState<Annotation[]>([]);
   const [newAnnotation, setNewAnnotation] = useState({ date: new Date(), note: '' });
   const [isAddingAnnotation, setIsAddingAnnotation] = useState(false);
+  const [editingAnnotation, setEditingAnnotation] = useState<Annotation | null>(null);
+  const [isEditingAnnotation, setIsEditingAnnotation] = useState(false);
 
   const fetchAnnotations = async () => {
     try {
@@ -93,6 +95,38 @@ const Analytics = () => {
       toast({
         title: 'Erro',
         description: 'Não foi possível adicionar a anotação.',
+        variant: 'destructive',
+      });
+    }
+  };
+
+  const editAnnotation = async () => {
+    if (!editingAnnotation || !editingAnnotation.note.trim()) return;
+
+    try {
+      const { error } = await supabase
+        .from('chart_annotations')
+        .update({
+          date: format(editingAnnotation.date, 'yyyy-MM-dd'),
+          note: editingAnnotation.note,
+        })
+        .eq('id', editingAnnotation.id);
+
+      if (error) throw error;
+
+      toast({
+        title: 'Anotação atualizada',
+        description: 'A anotação foi atualizada com sucesso.',
+      });
+
+      setEditingAnnotation(null);
+      setIsEditingAnnotation(false);
+      fetchAnnotations();
+    } catch (error) {
+      console.error('Error editing annotation:', error);
+      toast({
+        title: 'Erro',
+        description: 'Não foi possível atualizar a anotação.',
         variant: 'destructive',
       });
     }
@@ -490,6 +524,56 @@ const Analytics = () => {
                 </div>
               </DialogContent>
             </Dialog>
+            
+            <Dialog open={isEditingAnnotation} onOpenChange={setIsEditingAnnotation}>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Editar Anotação</DialogTitle>
+                  <DialogDescription>
+                    Atualize a descrição ou data da anotação
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="space-y-4 py-4">
+                  <div className="space-y-2">
+                    <Label>Data</Label>
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <Button
+                          variant="outline"
+                          className={cn(
+                            "w-full justify-start text-left font-normal",
+                            !editingAnnotation?.date && "text-muted-foreground"
+                          )}
+                        >
+                          <CalendarIcon className="mr-2 h-4 w-4" />
+                          {editingAnnotation?.date ? format(new Date(editingAnnotation.date), "dd/MM/yyyy") : "Selecione a data"}
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-auto p-0" align="start">
+                        <Calendar
+                          mode="single"
+                          selected={editingAnnotation?.date ? new Date(editingAnnotation.date) : undefined}
+                          onSelect={(date) => date && editingAnnotation && setEditingAnnotation({ ...editingAnnotation, date: format(date, 'yyyy-MM-dd') })}
+                          initialFocus
+                          className="p-3 pointer-events-auto"
+                        />
+                      </PopoverContent>
+                    </Popover>
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Descrição da Alteração</Label>
+                    <Input
+                      placeholder="Ex: Alterado cor do botão CTA"
+                      value={editingAnnotation?.note || ''}
+                      onChange={(e) => editingAnnotation && setEditingAnnotation({ ...editingAnnotation, note: e.target.value })}
+                    />
+                  </div>
+                  <Button onClick={editAnnotation} className="w-full">
+                    Atualizar Anotação
+                  </Button>
+                </div>
+              </DialogContent>
+            </Dialog>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
@@ -546,14 +630,26 @@ const Analytics = () => {
                           {annotation.note}
                         </p>
                       </div>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => deleteAnnotation(annotation.id)}
-                        className="text-destructive hover:text-destructive"
-                      >
-                        <Trash2 className="h-4 w-4" />
-                      </Button>
+                      <div className="flex gap-1">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => {
+                            setEditingAnnotation(annotation);
+                            setIsEditingAnnotation(true);
+                          }}
+                        >
+                          <Edit className="h-4 w-4" />
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => deleteAnnotation(annotation.id)}
+                          className="text-destructive hover:text-destructive"
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </Button>
+                      </div>
                     </div>
                   ))}
                 </div>
