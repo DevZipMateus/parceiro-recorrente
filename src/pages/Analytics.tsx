@@ -18,7 +18,7 @@ interface AnalyticsData {
   totalLeads: number;
   conversionRate: number;
   sourceData: Array<{ source: string; visits: number; leads: number; conversion: number }>;
-  timeSeriesData: Array<{ date: string; visits: number; leads: number }>;
+  timeSeriesData: Array<{ date: string; visits: number; leads: number; conversion: number }>;
 }
 
 const Analytics = () => {
@@ -122,6 +122,7 @@ const Analytics = () => {
         .map(item => ({
           ...item,
           date: format(new Date(item.date), 'dd/MM', { locale: ptBR }),
+          conversion: item.visits > 0 ? (item.leads / item.visits) * 100 : 0,
         }));
 
       setData({
@@ -334,6 +335,31 @@ const Analytics = () => {
                 <Tooltip />
                 <Line type="monotone" dataKey="visits" stroke="hsl(var(--primary))" name="Visitas" />
                 <Line type="monotone" dataKey="leads" stroke="hsl(var(--secondary))" name="Leads" />
+              </LineChart>
+            </ResponsiveContainer>
+          </CardContent>
+        </Card>
+
+        {/* Conversion Rate Chart */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Taxa de Conversão ao Longo do Tempo</CardTitle>
+            <CardDescription>Percentual de leads em relação às visitas por dia</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ResponsiveContainer width="100%" height={300}>
+              <LineChart data={data.timeSeriesData}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="date" />
+                <YAxis unit="%" />
+                <Tooltip formatter={(value: number) => `${value.toFixed(1)}%`} />
+                <Line 
+                  type="monotone" 
+                  dataKey="conversion" 
+                  stroke="hsl(var(--accent))" 
+                  name="Taxa de Conversão" 
+                  strokeWidth={2}
+                />
               </LineChart>
             </ResponsiveContainer>
           </CardContent>
