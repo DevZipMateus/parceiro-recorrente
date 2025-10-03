@@ -8,7 +8,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line, ReferenceLine } from 'recharts';
+import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line, ReferenceLine, Dot } from 'recharts';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/contexts/AuthContext';
 import { format, subDays, startOfDay, endOfDay, parseISO } from 'date-fns';
@@ -454,9 +454,48 @@ const Analytics = () => {
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="date" />
                 <YAxis />
-                <Tooltip />
+                <Tooltip 
+                  content={({ active, payload, label }) => {
+                    if (active && payload && payload.length) {
+                      const annotation = annotations.find(ann => {
+                        const annDate = format(parseISO(ann.date), 'dd/MM', { locale: ptBR });
+                        return annDate === label;
+                      });
+                      
+                      return (
+                        <div className="bg-background border border-border rounded-lg shadow-lg p-3">
+                          <p className="font-medium mb-2">{label}</p>
+                          {payload.map((entry: any, index: number) => (
+                            <p key={index} style={{ color: entry.color }}>
+                              {entry.name}: {entry.value}
+                            </p>
+                          ))}
+                          {annotation && (
+                            <div className="mt-2 pt-2 border-t border-border">
+                              <p className="text-xs font-medium text-primary">📌 Anotação:</p>
+                              <p className="text-xs text-muted-foreground">{annotation.note}</p>
+                            </div>
+                          )}
+                        </div>
+                      );
+                    }
+                    return null;
+                  }}
+                />
                 <Line type="monotone" dataKey="visits" stroke="hsl(var(--primary))" name="Visitas" />
                 <Line type="monotone" dataKey="leads" stroke="hsl(var(--secondary))" name="Leads" />
+                {annotations.map((annotation) => {
+                  const annotationDate = format(parseISO(annotation.date), 'dd/MM', { locale: ptBR });
+                  return (
+                    <ReferenceLine
+                      key={annotation.id}
+                      x={annotationDate}
+                      stroke="hsl(var(--primary))"
+                      strokeWidth={2}
+                      strokeDasharray="5 5"
+                    />
+                  );
+                })}
               </LineChart>
             </ResponsiveContainer>
           </CardContent>
@@ -581,7 +620,34 @@ const Analytics = () => {
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="date" />
                 <YAxis unit="%" />
-                <Tooltip formatter={(value: number) => `${value.toFixed(1)}%`} />
+                <Tooltip 
+                  content={({ active, payload, label }) => {
+                    if (active && payload && payload.length) {
+                      const annotation = annotations.find(ann => {
+                        const annDate = format(parseISO(ann.date), 'dd/MM', { locale: ptBR });
+                        return annDate === label;
+                      });
+                      
+                      return (
+                        <div className="bg-background border border-border rounded-lg shadow-lg p-3">
+                          <p className="font-medium mb-2">{label}</p>
+                          {payload.map((entry: any, index: number) => (
+                            <p key={index} style={{ color: entry.color }}>
+                              {entry.name}: {entry.value.toFixed(1)}%
+                            </p>
+                          ))}
+                          {annotation && (
+                            <div className="mt-2 pt-2 border-t border-border">
+                              <p className="text-xs font-medium text-primary">📌 Anotação:</p>
+                              <p className="text-xs text-muted-foreground">{annotation.note}</p>
+                            </div>
+                          )}
+                        </div>
+                      );
+                    }
+                    return null;
+                  }}
+                />
                 <Line 
                   type="monotone" 
                   dataKey="conversion" 
@@ -596,13 +662,8 @@ const Analytics = () => {
                       key={annotation.id}
                       x={annotationDate}
                       stroke="hsl(var(--primary))"
-                      strokeDasharray="3 3"
-                      label={{
-                        value: annotation.note,
-                        position: 'top',
-                        fill: 'hsl(var(--primary))',
-                        fontSize: 12,
-                      }}
+                      strokeWidth={2}
+                      strokeDasharray="5 5"
                     />
                   );
                 })}
