@@ -1,10 +1,12 @@
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-business-professional.jpg";
 import { useEffect } from "react";
-import { trackVisit } from "@/utils/analytics";
+import { trackVisit, storeUtmParams } from "@/utils/analytics";
 const HeroSection = () => {
   useEffect(() => {
-    // Track visit when component mounts
+    // Store UTM params first (if present in URL)
+    storeUtmParams();
+    // Then track visit (will use stored params if available)
     trackVisit();
   }, []);
 

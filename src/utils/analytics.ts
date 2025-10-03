@@ -10,15 +10,61 @@ export const getSessionId = (): string => {
   return sessionId;
 };
 
-// Extract UTM parameters from URL
-export const getUtmParams = () => {
+// Store UTM parameters in localStorage on first visit
+export const storeUtmParams = () => {
   const urlParams = new URLSearchParams(window.location.search);
-  return {
+  const utmParams = {
     utm_source: urlParams.get('utm_source'),
     utm_medium: urlParams.get('utm_medium'),
     utm_campaign: urlParams.get('utm_campaign'),
     utm_term: urlParams.get('utm_term'),
     utm_content: urlParams.get('utm_content'),
+  };
+
+  // Only store if at least one UTM parameter is present
+  if (Object.values(utmParams).some(value => value !== null)) {
+    localStorage.setItem('utm_params', JSON.stringify(utmParams));
+  }
+};
+
+// Extract UTM parameters from localStorage or URL
+export const getUtmParams = () => {
+  // First try to get from URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const hasUtmInUrl = urlParams.has('utm_source') || 
+                       urlParams.has('utm_medium') || 
+                       urlParams.has('utm_campaign');
+
+  if (hasUtmInUrl) {
+    const params = {
+      utm_source: urlParams.get('utm_source'),
+      utm_medium: urlParams.get('utm_medium'),
+      utm_campaign: urlParams.get('utm_campaign'),
+      utm_term: urlParams.get('utm_term'),
+      utm_content: urlParams.get('utm_content'),
+    };
+    // Store for future use
+    localStorage.setItem('utm_params', JSON.stringify(params));
+    return params;
+  }
+
+  // If no UTM in URL, try localStorage
+  const stored = localStorage.getItem('utm_params');
+  if (stored) {
+    try {
+      return JSON.parse(stored);
+    } catch (e) {
+      console.warn('Error parsing stored UTM params:', e);
+    }
+  }
+
+  // Default: all null
+  return {
+    utm_source: null,
+    utm_medium: null,
+    utm_campaign: null,
+    utm_term: null,
+    utm_content: null,
   };
 };
 
