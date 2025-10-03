@@ -14,6 +14,30 @@ export type Database = {
   }
   public: {
     Tables: {
+      chart_annotations: {
+        Row: {
+          created_at: string
+          date: string
+          id: string
+          note: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          date: string
+          id?: string
+          note: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          date?: string
+          id?: string
+          note?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       leads: {
         Row: {
           created_at: string

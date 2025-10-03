@@ -5,13 +5,25 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line } from 'recharts';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line, ReferenceLine } from 'recharts';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/contexts/AuthContext';
-import { format, subDays, startOfDay, endOfDay } from 'date-fns';
+import { format, subDays, startOfDay, endOfDay, parseISO } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
-import { CalendarIcon } from 'lucide-react';
+import { CalendarIcon, Plus, Trash2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useToast } from '@/hooks/use-toast';
+
+interface Annotation {
+  id: string;
+  date: string;
+  note: string;
+  created_at: string;
+  user_id: string;
+}
 
 interface AnalyticsData {
   totalVisits: number;
@@ -22,7 +34,8 @@ interface AnalyticsData {
 }
 
 const Analytics = () => {
-  const { signOut } = useAuth();
+  const { signOut, user } = useAuth();
+  const { toast } = useToast();
   const [data, setData] = useState<AnalyticsData>({
     totalVisits: 0,
     totalLeads: 0,
@@ -35,6 +48,80 @@ const Analytics = () => {
   const [dateTo, setDateTo] = useState<Date | undefined>(new Date());
   const [filterType, setFilterType] = useState<'preset' | 'custom'>('preset');
   const [loading, setLoading] = useState(true);
+  const [annotations, setAnnotations] = useState<Annotation[]>([]);
+  const [newAnnotation, setNewAnnotation] = useState({ date: new Date(), note: '' });
+  const [isAddingAnnotation, setIsAddingAnnotation] = useState(false);
+
+  const fetchAnnotations = async () => {
+    try {
+      const { data: annotationsData, error } = await supabase
+        .from('chart_annotations')
+        .select('*')
+        .order('date', { ascending: false });
+
+      if (error) throw error;
+      setAnnotations(annotationsData || []);
+    } catch (error) {
+      console.error('Error fetching annotations:', error);
+    }
+  };
+
+  const addAnnotation = async () => {
+    if (!newAnnotation.note.trim() || !user) return;
+
+    try {
+      const { error } = await supabase
+        .from('chart_annotations')
+        .insert({
+          date: format(newAnnotation.date, 'yyyy-MM-dd'),
+          note: newAnnotation.note,
+          user_id: user.id,
+        });
+
+      if (error) throw error;
+
+      toast({
+        title: 'Anotação adicionada',
+        description: 'A anotação foi adicionada com sucesso.',
+      });
+
+      setNewAnnotation({ date: new Date(), note: '' });
+      setIsAddingAnnotation(false);
+      fetchAnnotations();
+    } catch (error) {
+      console.error('Error adding annotation:', error);
+      toast({
+        title: 'Erro',
+        description: 'Não foi possível adicionar a anotação.',
+        variant: 'destructive',
+      });
+    }
+  };
+
+  const deleteAnnotation = async (id: string) => {
+    try {
+      const { error } = await supabase
+        .from('chart_annotations')
+        .delete()
+        .eq('id', id);
+
+      if (error) throw error;
+
+      toast({
+        title: 'Anotação removida',
+        description: 'A anotação foi removida com sucesso.',
+      });
+
+      fetchAnnotations();
+    } catch (error) {
+      console.error('Error deleting annotation:', error);
+      toast({
+        title: 'Erro',
+        description: 'Não foi possível remover a anotação.',
+        variant: 'destructive',
+      });
+    }
+  };
 
   const fetchAnalytics = async () => {
     setLoading(true);
@@ -140,6 +227,7 @@ const Analytics = () => {
 
   useEffect(() => {
     fetchAnalytics();
+    fetchAnnotations();
   }, [period, dateFrom, dateTo, filterType]);
 
   const COLORS = ['hsl(var(--primary))', 'hsl(var(--secondary))', 'hsl(var(--accent))', '#8884d8', '#82ca9d', '#ffc658'];
@@ -340,11 +428,68 @@ const Analytics = () => {
           </CardContent>
         </Card>
 
-        {/* Conversion Rate Chart */}
+        {/* Conversion Rate Chart with Annotations */}
         <Card>
-          <CardHeader>
-            <CardTitle>Taxa de Conversão ao Longo do Tempo</CardTitle>
-            <CardDescription>Percentual de leads em relação às visitas por dia</CardDescription>
+          <CardHeader className="flex flex-row items-center justify-between">
+            <div>
+              <CardTitle>Taxa de Conversão ao Longo do Tempo</CardTitle>
+              <CardDescription>Percentual de leads em relação às visitas por dia</CardDescription>
+            </div>
+            <Dialog open={isAddingAnnotation} onOpenChange={setIsAddingAnnotation}>
+              <DialogTrigger asChild>
+                <Button size="sm" className="gap-2">
+                  <Plus className="h-4 w-4" />
+                  Adicionar Anotação
+                </Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Nova Anotação</DialogTitle>
+                  <DialogDescription>
+                    Adicione uma anotação para marcar alterações importantes na página
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="space-y-4 py-4">
+                  <div className="space-y-2">
+                    <Label>Data</Label>
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <Button
+                          variant="outline"
+                          className={cn(
+                            "w-full justify-start text-left font-normal",
+                            !newAnnotation.date && "text-muted-foreground"
+                          )}
+                        >
+                          <CalendarIcon className="mr-2 h-4 w-4" />
+                          {format(newAnnotation.date, "dd/MM/yyyy")}
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-auto p-0" align="start">
+                        <Calendar
+                          mode="single"
+                          selected={newAnnotation.date}
+                          onSelect={(date) => date && setNewAnnotation({ ...newAnnotation, date })}
+                          initialFocus
+                          className="p-3 pointer-events-auto"
+                        />
+                      </PopoverContent>
+                    </Popover>
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Descrição da Alteração</Label>
+                    <Input
+                      placeholder="Ex: Alterado cor do botão CTA"
+                      value={newAnnotation.note}
+                      onChange={(e) => setNewAnnotation({ ...newAnnotation, note: e.target.value })}
+                    />
+                  </div>
+                  <Button onClick={addAnnotation} className="w-full">
+                    Salvar Anotação
+                  </Button>
+                </div>
+              </DialogContent>
+            </Dialog>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
@@ -360,8 +505,60 @@ const Analytics = () => {
                   name="Taxa de Conversão" 
                   strokeWidth={2}
                 />
+                {annotations.map((annotation) => {
+                  const annotationDate = format(parseISO(annotation.date), 'dd/MM', { locale: ptBR });
+                  return (
+                    <ReferenceLine
+                      key={annotation.id}
+                      x={annotationDate}
+                      stroke="hsl(var(--primary))"
+                      strokeDasharray="3 3"
+                      label={{
+                        value: annotation.note,
+                        position: 'top',
+                        fill: 'hsl(var(--primary))',
+                        fontSize: 12,
+                      }}
+                    />
+                  );
+                })}
               </LineChart>
             </ResponsiveContainer>
+            
+            {/* Annotations List */}
+            {annotations.length > 0 && (
+              <div className="mt-6 space-y-2">
+                <h4 className="text-sm font-medium">Anotações</h4>
+                <div className="space-y-2">
+                  {annotations.map((annotation) => (
+                    <div
+                      key={annotation.id}
+                      className="flex items-start justify-between p-3 bg-muted rounded-lg"
+                    >
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2">
+                          <div className="h-3 w-3 rounded-full bg-primary" />
+                          <span className="text-sm font-medium">
+                            {format(parseISO(annotation.date), "dd 'de' MMMM 'de' yyyy", { locale: ptBR })}
+                          </span>
+                        </div>
+                        <p className="text-sm text-muted-foreground mt-1 ml-5">
+                          {annotation.note}
+                        </p>
+                      </div>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => deleteAnnotation(annotation.id)}
+                        className="text-destructive hover:text-destructive"
+                      >
+                        <Trash2 className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </CardContent>
         </Card>
 
