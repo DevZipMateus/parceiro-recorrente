@@ -15,14 +15,14 @@ const CTASection = () => {
     phone: "",
     profession: "",
     salesExperience: "",
-    investmentRange: ""
+    investmentRange: "",
   });
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
   const navigate = useNavigate();
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -31,7 +31,14 @@ const CTASection = () => {
 
     try {
       // Validação básica
-      if (!formData.name || !formData.email || !formData.phone || !formData.profession || !formData.salesExperience || !formData.investmentRange) {
+      if (
+        !formData.name ||
+        !formData.email ||
+        !formData.phone ||
+        !formData.profession ||
+        !formData.salesExperience ||
+        !formData.investmentRange
+      ) {
         toast({
           title: "Erro",
           description: "Por favor, preencha todos os campos obrigatórios.",
@@ -58,9 +65,8 @@ const CTASection = () => {
 
       // Redirecionar para página de agradecimento após um delay
       setTimeout(() => {
-        navigate('/obrigado');
+        navigate("/obrigado");
       }, 2000);
-
     } catch (error) {
       console.error("Erro ao enviar formulário:", error);
       toast({
@@ -73,64 +79,66 @@ const CTASection = () => {
     }
   };
 
-  return <section id="formulario" className="py-8 md:py-16 bg-gradient-to-br from-primary/5 to-accent/5">
+  return (
+    <section id="formulario" className="py-8 md:py-16 bg-gradient-to-br from-primary/5 to-accent/5">
       <div className="container max-w-4xl mx-auto px-4 md:px-6">
         <div className="text-center mb-8 md:mb-12">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-4 md:mb-6 font-sans">
             Quer entender exatamente como funciona?
           </h2>
-          <p className="text-base md:text-lg text-muted-foreground mb-2">
-            O próximo passo é simples:
-          </p>
+          <p className="text-base md:text-lg text-muted-foreground mb-2">O próximo passo é simples:</p>
           <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
-            Preencha o formulário abaixo com seus dados e entraremos em contato para explicar todos os detalhes, 
+            Preencha o formulário abaixo com seus dados e entraremos em contato para explicar todos os detalhes,
             esclarecer suas dúvidas e mostrar cases reais de representantes que estão tendo sucesso.
           </p>
         </div>
 
-        <Card className="border-0 shadow-xl" style={{
-        boxShadow: 'var(--accent-shadow)'
-      }}>
+        <Card
+          className="border-0 shadow-xl"
+          style={{
+            boxShadow: "var(--accent-shadow)",
+          }}
+        >
           <CardContent className="p-4 sm:p-6 md:p-8">
             <form onSubmit={handleSubmit} data-form-type="embedded" className="space-y-4 md:space-y-6">
               {/* Campos hidden para identificação do RD Station */}
               <input type="hidden" name="token" value="004614e99c43a7bca7b23af79bdcae34" />
               <input type="hidden" name="identificador" value="form-franquia" />
               <input type="hidden" name="conversion_identifier" value="form-franquia" />
-              
+
               {/* Campos UTM para origem no RD Station */}
               <input type="hidden" name="utm_source" value="lp-franquia" />
               <input type="hidden" name="utm_medium" value="landing-page" />
               <input type="hidden" name="utm_campaign" value="franquia-zipline" />
-              
+
               <div className="grid gap-4 md:grid-cols-2 md:gap-6">
                 <div>
                   <Label htmlFor="fullName" className="text-sm font-medium">
                     Nome *
                   </Label>
-                  <Input 
-                    id="fullName" 
+                  <Input
+                    id="fullName"
                     name="name"
                     value={formData.name}
                     onChange={(e) => handleInputChange("name", e.target.value)}
-                    placeholder="Digite seu nome" 
-                    className="mt-1 md:mt-2 h-11 md:h-10 focus-glow fast-transition" 
-                    required 
+                    placeholder="Digite seu nome"
+                    className="mt-1 md:mt-2 h-11 md:h-10 focus-glow fast-transition"
+                    required
                   />
                 </div>
                 <div>
                   <Label htmlFor="emailAddress" className="text-sm font-medium">
                     Email *
                   </Label>
-                  <Input 
-                    id="emailAddress" 
+                  <Input
+                    id="emailAddress"
                     name="email"
-                    type="email" 
+                    type="email"
                     value={formData.email}
                     onChange={(e) => handleInputChange("email", e.target.value)}
-                    placeholder="Digite seu email" 
-                    className="mt-1 md:mt-2 h-11 md:h-10 focus-glow fast-transition" 
-                    required 
+                    placeholder="Digite seu email"
+                    className="mt-1 md:mt-2 h-11 md:h-10 focus-glow fast-transition"
+                    required
                   />
                 </div>
               </div>
@@ -140,49 +148,51 @@ const CTASection = () => {
                   <Label htmlFor="phoneNumber" className="text-sm font-medium">
                     Telefone *
                   </Label>
-                  <Input 
-                    id="phoneNumber" 
+                  <Input
+                    id="phoneNumber"
                     name="mobile_phone"
                     value={formData.phone}
                     onChange={(e) => handleInputChange("phone", e.target.value)}
-                    placeholder="(11) 99999-9999" 
-                    className="mt-1 md:mt-2 h-11 md:h-10 focus-glow fast-transition" 
-                    required 
+                    placeholder="(11) 99999-9999"
+                    className="mt-1 md:mt-2 h-11 md:h-10 focus-glow fast-transition"
+                    required
                   />
                 </div>
                 <div>
                   <Label htmlFor="profession" className="text-sm font-medium">
                     Profissão *
                   </Label>
-                  <Input 
-                    id="profession" 
+                  <Input
+                    id="profession"
                     name="job_title"
                     value={formData.profession}
                     onChange={(e) => handleInputChange("profession", e.target.value)}
-                    placeholder="Sua profissão" 
-                    className="mt-1 md:mt-2 h-11 md:h-10 focus-glow fast-transition" 
-                    required 
+                    placeholder="Sua profissão"
+                    className="mt-1 md:mt-2 h-11 md:h-10 focus-glow fast-transition"
+                    required
                   />
                 </div>
               </div>
 
               <div>
-                <Label className="text-sm font-medium mb-3 block">
-                  Tem experiência em vendas? *
-                </Label>
-                <RadioGroup 
-                  value={formData.salesExperience} 
+                <Label className="text-sm font-medium mb-3 block">Tem experiência em vendas? *</Label>
+                <RadioGroup
+                  value={formData.salesExperience}
                   onValueChange={(value) => handleInputChange("salesExperience", value)}
                   className="flex gap-6"
                   name="cf_experiencia_em_vendas"
                 >
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="Sim" id="sim" />
-                    <Label htmlFor="sim" className="text-sm font-normal cursor-pointer">Sim</Label>
+                    <Label htmlFor="sim" className="text-sm font-normal cursor-pointer">
+                      Sim
+                    </Label>
                   </div>
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="Não" id="nao" />
-                    <Label htmlFor="nao" className="text-sm font-normal cursor-pointer">Não</Label>
+                    <Label htmlFor="nao" className="text-sm font-normal cursor-pointer">
+                      Não
+                    </Label>
                   </div>
                 </RadioGroup>
               </div>
@@ -191,8 +201,8 @@ const CTASection = () => {
                 <Label htmlFor="investment" className="text-sm font-medium">
                   Selecione a faixa de investimento *
                 </Label>
-                <Select 
-                  value={formData.investmentRange} 
+                <Select
+                  value={formData.investmentRange}
                   onValueChange={(value) => handleInputChange("investmentRange", value)}
                   name="cf_faixa_de_investimento"
                 >
@@ -200,6 +210,7 @@ const CTASection = () => {
                     <SelectValue placeholder="Escolha sua faixa de investimento" />
                   </SelectTrigger>
                   <SelectContent>
+                    <SelectItem value="De 30.000 a 100.000">De 30.000 a 100.000</SelectItem>
                     <SelectItem value="De 100.000 a 150.000">De 100.000 a 150.000</SelectItem>
                     <SelectItem value="De 150.000 a 200.000">De 150.000 a 200.000</SelectItem>
                     <SelectItem value="De 200.000 a 300.000">De 200.000 a 300.000</SelectItem>
@@ -209,9 +220,9 @@ const CTASection = () => {
               </div>
 
               <div className="flex flex-col gap-3 pt-2 md:pt-4">
-                <Button 
-                  type="submit" 
-                  size="lg" 
+                <Button
+                  type="submit"
+                  size="lg"
                   disabled={isLoading}
                   className="w-full h-12 md:h-auto bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-sm md:text-lg py-3 md:py-6 font-sans hover-glow smooth-transition hover:scale-[1.02] disabled:opacity-50 disabled:hover:scale-100"
                 >
@@ -238,6 +249,7 @@ const CTASection = () => {
           </CardContent>
         </Card>
       </div>
-    </section>;
+    </section>
+  );
 };
 export default CTASection;
